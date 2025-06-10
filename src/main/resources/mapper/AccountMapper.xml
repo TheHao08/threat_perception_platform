@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tpp.threat_perception_platform.dao.AccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.Account">
+            <id property="id" column="id" />
+            <result property="macAddress" column="mac_address" />
+            <result property="name" column="name" />
+            <result property="fullName" column="full_name" />
+            <result property="sid" column="sid" />
+            <result property="sidType" column="sid_type" />
+            <result property="status" column="status" />
+            <result property="disabled" column="disabled" />
+            <result property="lockout" column="lockout" />
+            <result property="passwordChangeable" column="password_changeable" />
+            <result property="passwordExpires" column="password_expires" />
+            <result property="passwordRequired" column="password_required" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,mac_address,name,full_name,sid,sid_type,
+        status,disabled,lockout,password_changeable,password_expires,
+        password_required
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from account
+        where  id = #{id} 
+    </select>
+    <select id="selectByMacAddress" resultType="com.tpp.threat_perception_platform.pojo.Account">
+        select
+        <include refid="Base_Column_List" />
+        from account
+        where mac_address = #{macAddress} and name = #{name}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from account
+        where  id = #{id} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.Account" useGeneratedKeys="true">
+        insert into account
+        ( id,mac_address,name,full_name,sid,sid_type,
+        status,disabled,lockout,password_changeable,password_expires,
+        password_required)
+        values (#{id},#{macAddress},#{name},#{fullName},#{sid},#{sidType},
+        #{status},#{disabled},#{lockout},#{passwordChangeable},#{passwordExpires},
+        #{passwordRequired})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.Account" useGeneratedKeys="true">
+        insert into account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="macAddress != null">mac_address,</if>
+                <if test="name != null">name,</if>
+                <if test="fullName != null">full_name,</if>
+                <if test="sid != null">sid,</if>
+                <if test="sidType != null">sid_type,</if>
+                <if test="status != null">status,</if>
+                <if test="disabled != null">disabled,</if>
+                <if test="lockout != null">lockout,</if>
+                <if test="passwordChangeable != null">password_changeable,</if>
+                <if test="passwordExpires != null">password_expires,</if>
+                <if test="passwordRequired != null">password_required,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id},</if>
+                <if test="macAddress != null">#{macAddress},</if>
+                <if test="name != null">#{name},</if>
+                <if test="fullName != null">#{fullName},</if>
+                <if test="sid != null">#{sid},</if>
+                <if test="sidType != null">#{sidType},</if>
+                <if test="status != null">#{status},</if>
+                <if test="disabled != null">#{disabled},</if>
+                <if test="lockout != null">#{lockout},</if>
+                <if test="passwordChangeable != null">#{passwordChangeable},</if>
+                <if test="passwordExpires != null">#{passwordExpires},</if>
+                <if test="passwordRequired != null">#{passwordRequired},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.Account">
+        update account
+        <set>
+                <if test="macAddress != null">
+                    mac_address = #{macAddress},
+                </if>
+                <if test="name != null">
+                    name = #{name},
+                </if>
+                <if test="fullName != null">
+                    full_name = #{fullName},
+                </if>
+                <if test="sid != null">
+                    sid = #{sid},
+                </if>
+                <if test="sidType != null">
+                    sid_type = #{sidType},
+                </if>
+                <if test="status != null">
+                    status = #{status},
+                </if>
+                <if test="disabled != null">
+                    disabled = #{disabled},
+                </if>
+                <if test="lockout != null">
+                    lockout = #{lockout},
+                </if>
+                <if test="passwordChangeable != null">
+                    password_changeable = #{passwordChangeable},
+                </if>
+                <if test="passwordExpires != null">
+                    password_expires = #{passwordExpires},
+                </if>
+                <if test="passwordRequired != null">
+                    password_required = #{passwordRequired},
+                </if>
+        </set>
+        where   id = #{id} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.Account">
+        update account
+        set 
+            mac_address =  #{macAddress},
+            name =  #{name},
+            full_name =  #{fullName},
+            sid =  #{sid},
+            sid_type =  #{sidType},
+            status =  #{status},
+            disabled =  #{disabled},
+            lockout =  #{lockout},
+            password_changeable =  #{passwordChangeable},
+            password_expires =  #{passwordExpires},
+            password_required =  #{passwordRequired}
+        where   id = #{id} 
+    </update>
+</mapper>
