@@ -77,7 +77,10 @@
                     {field:'lockout', title:'是否锁定', templet: function(d){ return d.lockout === 1 ? '是' : '否'; }},
                     {field:'passwordChangeable', title:'是否可改密', templet: function(d){ return d.passwordChangeable === 1 ? '是' : '否'; }},
                     {field:'passwordExpires', title:'是否密码过期', templet: function(d){ return d.passwordExpires === 1 ? '是' : '否'; }},
-                    {field:'passwordRequired', title:'是否需密码', templet: function(d){ return d.passwordRequired === 1 ? '是' : '否'; }}
+                    {field:'passwordRequired', title:'是否需密码', templet: function(d){ return d.passwordRequired === 1 ? '是' : '否'; }},
+                    {field:'danger', title:'是否有风险', templet: function(d){
+                            return d.danger ? "<span style='color:red;font-weight:bold;'>是</span>" : "否";
+                        }}
                 ]]
             });
         }
@@ -100,7 +103,10 @@
                     {field:'name', title:'服务名'},
                     {field:'product', title:'产品'},
                     {field:'version', title:'版本'},
-                    {field:'extrainfo', title:'额外信息'}
+                    {field:'extrainfo', title:'额外信息'},
+                    {field:'danger', title:'是否有风险', templet: function(d){
+                            return d.danger ? "<span style='color:red;font-weight:bold;'>是</span>" : "否";
+                        }}
                 ]]
             });
         }
@@ -122,7 +128,10 @@
                     {field:'name', title:'进程名'},
                     {field:'cmd', title:'命令行'},
                     {field:'priority', title:'优先级'},
-                    {field:'description', title:'描述'}
+                    {field:'description', title:'描述'},
+                    {field:'danger', title:'是否有风险', templet: function(d){
+                            return d.danger ? "<span style='color:red;font-weight:bold;'>是</span>" : "否";
+                        }}
                 ]]
             });
         }
@@ -141,7 +150,10 @@
                 cols: [[
                     {field:'displayName', title:'应用名'},
                     {field:'installLocation', title:'安装路径'},
-                    {field:'uninstallString', title:'卸载命令'}
+                    {field:'uninstallString', title:'卸载命令'},
+                    {field:'danger', title:'是否有风险', templet: function(d){
+                            return d.danger ? "<span style='color:red;font-weight:bold;'>是</span>" : "否";
+                        }}
                 ]]
             });
         }
