@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>资产探测</title>
+    <title>资产探测页面</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -24,33 +24,31 @@
 
 <!--表单-->
 <div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 0 0 0;">
-
-    <!--  主机名  -->
+    <!--  用户名  -->
     <div class="layui-form-item">
         <label class="layui-form-label">主机名<span class="xinghao">*</span></label>
         <div class="layui-input-inline st">
-            <input type="text" name="hostname" readonly lay-verify="required"  autocomplete="off" class="layui-input">
+            <input type="text" name="hostName" readonly lay-verify="required|hostname"  autocomplete="off" class="layui-input">
         </div>
     </div>
-    <!--  MAC地址  -->
+    <!--  用户角色  -->
     <div class="layui-form-item">
-        <label class="layui-form-label">MAC<span class="xinghao">*</span></label>
+        <label class="layui-form-label">MAC地址<span class="xinghao">*</span></label>
         <div class="layui-input-inline st">
-            <input type="text" name="mac" readonly lay-verify="required"  autocomplete="off" class="layui-input">
+            <input type="text" name="macAddress" readonly lay-verify="required"  autocomplete="off" class="layui-input">
         </div>
     </div>
 
-    <!--  选项 -->
+    <!--  状态 -->
     <div class="layui-form-item">
-        <label class="layui-form-label" style="background-color: #2D93CA">选项</label>
+        <label class="layui-form-label">探测项</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="account" value="1"  checked="">账号探测
-            <input type="checkbox" name="service" value="1" >服务探测
-            <input type="checkbox" name="process" value="1" >进程探测
-            <input type="checkbox" name="app" value="1" >应用探测
+            <input type="checkbox" name="account" value="1" checked>账号探测
+            <input type="checkbox" name="service" value="1" checked>服务探测
+            <input type="checkbox" name="process" value="1" checked>进程探测
+            <input type="checkbox" name="app" value="1" checked>应用探测
         </div>
     </div>
-
 
     <!--  提交 -->
     <div class="layui-form-item layui-hide">
