@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.tpp.threat_perception_platform.dao.UserMapper;
 import com.tpp.threat_perception_platform.param.MyParam;
 import com.tpp.threat_perception_platform.pojo.User;
-import com.tpp.threat_perception_platform.pojo.UserDto;
 import com.tpp.threat_perception_platform.response.ResponseResult;
 import com.tpp.threat_perception_platform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-
-
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     /**
@@ -30,26 +27,14 @@ public class UserServiceImpl implements UserService {
      * @param param
      * @return
      */
-
-//    @Override
-//    public ResponseResult userList(MyParam param) {
-//        // 设置分页参数
-//        PageHelper.startPage(param.getPage(), param.getLimit());
-//        // 查询所有
-//        List<User> userlist = userMapper.findAll(param);
-//        // 构架pageInfo
-//        PageInfo<User> pageInfo = new PageInfo<>(userlist);
-//
-//        return new ResponseResult<>(pageInfo.getTotal(), pageInfo.getList());
-//    }
     @Override
     public ResponseResult userList(MyParam param) {
         // 设置分页参数
         PageHelper.startPage(param.getPage(), param.getLimit());
         // 查询所有
-        List<UserDto> userlist = userMapper.findAll(param); // 接收类型改为 List<UserDto>
+        List<User> userList = userMapper.findAll(param);
         // 构架pageInfo
-        PageInfo<UserDto> pageInfo = new PageInfo<>(userlist); // PageInfo 泛型改为 UserDto
+        PageInfo<User> pageInfo = new PageInfo<>(userList);
 
         return new ResponseResult<>(pageInfo.getTotal(), pageInfo.getList());
     }

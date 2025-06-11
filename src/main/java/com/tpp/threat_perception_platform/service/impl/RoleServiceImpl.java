@@ -14,55 +14,44 @@ import java.util.List;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-
     @Autowired
     private RoleMapper roleMapper;
 
-
     @Override
     public ResponseResult roleList(MyParam param) {
-        // 设置分页参数
         PageHelper.startPage(param.getPage(), param.getLimit());
-        // 查询所有
         List<Role> roleList = roleMapper.findAll(param);
-        // 构架pageInfo
         PageInfo<Role> pageInfo = new PageInfo<>(roleList);
-
         return new ResponseResult<>(pageInfo.getTotal(), pageInfo.getList());
     }
 
     @Override
-    public void updateRole(Role role) {
-        roleMapper.updateByPrimaryKey(role);
-    }
-
-    @Override
     public ResponseResult save(Role role) {
-        // 先查询 是否有角色
-        // Role db_role = roleMapper.selectByPrimaryKey(role.getRoleId().longValue());
-        Role db_role = roleMapper.selectByRoleName(role.getRoleName());
-        if ( db_role!= null){
-            return new ResponseResult<>(1003, "角色已存在！");
+        int res = roleMapper.insertSelective(role);
+        if (res > 0) {
+            return new ResponseResult<>(0, "添加成功");
         }
-
-        // 添加
-        roleMapper.insertSelective(role);
-        return new ResponseResult<>(0, "添加成功！");
+        return new ResponseResult<>(1, "添加失败");
     }
 
     @Override
     public ResponseResult edit(Role role) {
-
-        //Role db_role = roleMapper.selectByRoleName(role.getRoleName());
-        Role db_role = roleMapper.selectByPrimaryKey(role.getRoleId().longValue());
-
-        roleMapper.updateByPrimaryKeySelective(role);
-        return new ResponseResult<>(0, "更新成功！");
+        int res = roleMapper.updateByPrimaryKeySelective(role);
+        if (res > 0) {
+            return new ResponseResult<>(0, "修改成功");
+        }
+        return new ResponseResult<>(1, "修改失败");
     }
 
     @Override
-    public ResponseResult delete(Integer[] ids) {
-        roleMapper.delete(ids);
-        return new ResponseResult<>(0, "删除成功！");
+    public ResponseResult delete(List<Long> roleId) {
+        int count = 0;
+        for (Long id : roleId) {
+            count += roleMapper.deleteByPrimaryKey(id);
+        }
+        if (count > 0) {
+            return new ResponseResult<>(0, "删除成功");
+        }
+        return new ResponseResult<>(1, "删除失败");
     }
 }
