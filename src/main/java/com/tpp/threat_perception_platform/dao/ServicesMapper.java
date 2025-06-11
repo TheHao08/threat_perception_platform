@@ -3,6 +3,8 @@ package com.tpp.threat_perception_platform.dao;
 import com.tpp.threat_perception_platform.pojo.Services;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
 * @author bqs1
 * @description 针对表【services】的数据库操作Mapper
@@ -24,4 +26,6 @@ public interface ServicesMapper {
     int updateByPrimaryKey(Services record);
 
     Services selectByMacAddressAndPort(@Param("macAddress")String macAddress,@Param("port") Integer port);
+
+    List<Services> selectByMacAddress(String macAddress);
 }

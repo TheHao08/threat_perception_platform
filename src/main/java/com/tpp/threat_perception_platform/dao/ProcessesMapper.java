@@ -4,6 +4,8 @@ import com.tpp.threat_perception_platform.pojo.Account;
 import com.tpp.threat_perception_platform.pojo.Processes;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
 * @author bqs1
 * @description 针对表【processes】的数据库操作Mapper
@@ -26,4 +28,5 @@ public interface ProcessesMapper {
 
     int updateByPrimaryKey(Processes record);
 
+    List<Processes> selectByMacAddress(String macAddress);
 }

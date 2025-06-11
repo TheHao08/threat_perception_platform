@@ -2,7 +2,6 @@ package com.tpp.threat_perception_platform.dao;
 
 import com.tpp.threat_perception_platform.param.MyParam;
 import com.tpp.threat_perception_platform.pojo.User;
-import com.tpp.threat_perception_platform.pojo.UserDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public interface UserMapper {
      * @param param
      * @return
      */
-    List<UserDto> findAll(@Param("param") MyParam param);
+    List<User> findAll(@Param("param") MyParam param);
 
     /**
      * 根据用户名查询用户

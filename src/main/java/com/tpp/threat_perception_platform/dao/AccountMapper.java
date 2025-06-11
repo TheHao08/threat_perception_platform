@@ -3,7 +3,7 @@ package com.tpp.threat_perception_platform.dao;
 import com.tpp.threat_perception_platform.pojo.Account;
 import com.tpp.threat_perception_platform.pojo.Host;
 import io.lettuce.core.dynamic.annotation.Param;
-
+import java.util.List;
 /**
 * @author bqs1
 * @description 针对表【account】的数据库操作Mapper
@@ -18,6 +18,7 @@ public interface AccountMapper {
 
     int insertSelective(Account record);
 
+    List<Account> selectListByMacAddress(String macAddress);
     Account selectByPrimaryKey(Long id);
 
     Account selectByMacAddress(String macAddress, String name);

@@ -3,6 +3,8 @@ package com.tpp.threat_perception_platform.dao;
 import com.tpp.threat_perception_platform.pojo.App;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author bqs1
  * @description 针对表【app】的数据库操作Mapper
@@ -24,4 +26,6 @@ public interface AppMapper {
     int updateByPrimaryKey(App record);
 
     App selectByMacAddressAndDisplayName(@Param("macAddress") String macAddress, @Param("displayName") String displayName);
+
+    List<App> selectByMacAddress(String macAddress);
 }

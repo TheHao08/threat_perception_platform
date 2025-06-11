@@ -2,19 +2,16 @@ package com.tpp.threat_perception_platform.dao;
 
 import com.tpp.threat_perception_platform.param.MyParam;
 import com.tpp.threat_perception_platform.pojo.Role;
-import com.tpp.threat_perception_platform.pojo.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
-* @author 35162
+* @author bqs1
 * @description 针对表【role】的数据库操作Mapper
-* @createDate 2025-06-04 16:49:54
+* @createDate 2025-06-04 18:34:07
 * @Entity com.tpp.threat_perception_platform.pojo.Role
 */
-@Mapper
 public interface RoleMapper {
 
     int deleteByPrimaryKey(Long id);
@@ -25,13 +22,14 @@ public interface RoleMapper {
 
     Role selectByPrimaryKey(Long id);
 
-    Role selectByRoleName(@Param("roleName") String roleName);
-
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
 
+    /**
+     * *查询所有角色
+     * @param param
+     * @return
+     */
     List<Role> findAll(@Param("param") MyParam param);
-
-    void delete(@Param("ids") Integer[] ids);
 }
