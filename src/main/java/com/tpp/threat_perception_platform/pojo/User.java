@@ -41,6 +41,11 @@ public class User implements Serializable {
     private Integer userRole;
 
     /**
+     * 用户角色名称
+     */
+    private String userRoleName;
+
+    /**
      * 用户创建时间
      */
     private Date createTime;

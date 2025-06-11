@@ -211,4 +211,14 @@ public class Processes {
         sb.append("]");
         return sb.toString();
     }
+
+    private Boolean danger;
+    public void setDanger(Boolean danger) { this.danger = danger; }
+    public Boolean getDanger() { return danger; }
+    public String getPpidName() {
+        if (ppid == null || ppid == 0) {
+            return "N/A";
+        }
+        return String.valueOf(ppid);
+    }
 }

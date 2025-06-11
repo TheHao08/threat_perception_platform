@@ -145,4 +145,7 @@ public class App {
         sb.append("]");
         return sb.toString();
     }
+    private Boolean danger;
+    public void setDanger(Boolean danger) { this.danger = danger; }
+    public Boolean getDanger() { return danger; }
 }

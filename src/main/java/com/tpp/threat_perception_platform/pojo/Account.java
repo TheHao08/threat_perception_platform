@@ -73,11 +73,16 @@ public class Account {
     /**
      * 
      */
+    // src/main/java/com/tpp/threat_perception_platform/pojo/Account.java
+    private boolean danger; // 新增字段
+
+    public boolean isDanger() { return danger; }
+    public void setDanger(boolean danger) { this.danger = danger; }
     public Long getId() {
         return id;
     }
-
-    /**
+    public Boolean getDanger() { return danger; }
+       /**
      * 
      */
     public void setId(Long id) {
@@ -304,4 +309,5 @@ public class Account {
         sb.append("]");
         return sb.toString();
     }
+
 }

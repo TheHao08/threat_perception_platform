@@ -3,239 +3,255 @@ package com.tpp.threat_perception_platform.pojo;
 import java.util.Date;
 
 /**
- * 
+ * 主机表
  * @TableName host
  */
 public class Host {
     /**
-     * 
+     * 自增id
      */
     private Integer id;
 
     /**
-     * 
+     * 主机mac地址
      */
-    private String mac;
+    private String macAddress;
 
     /**
-     * 
+     * 主机的名字
      */
-    private String hostname;
+    private String hostName;
 
     /**
-     * 
+     * 主机的ip地址
      */
-    private String ip;
+    private String ipAddress;
 
     /**
-     * 
+     * 主机的系统类型
+     */
+    private String osType;
+
+    /**
+     * 主机的操作系统名字
      */
     private String osName;
 
     /**
-     * 
+     * 主机操作系统版本号
      */
     private String osVersion;
 
     /**
-     * 
+     * 主机操作系统位数
      */
-    private String osArch;
+    private String osBit;
 
     /**
-     * 
+     * cpu名字
      */
     private String cpuName;
 
     /**
-     * 
+     * 主机内存大小
      */
     private String ram;
 
     /**
-     * 1zaixai,0buzai
-
+     * 主机状态：1在线 0下线
      */
     private Integer status;
 
     /**
-     * 
+     * 创建时间
      */
-    private Date createtime;
+    private Date createTime;
 
     /**
-     * 
+     * 更新时间
      */
-    private Date updatetime;
+    private Date updateTime;
 
     /**
-     * 
+     * 自增id
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * 
+     * 自增id
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 
+     * 主机mac地址
      */
-    public String getMac() {
-        return mac;
+    public String getMacAddress() {
+        return macAddress;
     }
 
     /**
-     * 
+     * 主机mac地址
      */
-    public void setMac(String mac) {
-        this.mac = mac;
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
     }
 
     /**
-     * 
+     * 主机的名字
      */
-    public String getHostname() {
-        return hostname;
+    public String getHostName() {
+        return hostName;
     }
 
     /**
-     * 
+     * 主机的名字
      */
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
     }
 
     /**
-     * 
+     * 主机的ip地址
      */
-    public String getIp() {
-        return ip;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
     /**
-     * 
+     * 主机的ip地址
      */
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
     /**
-     * 
+     * 主机的系统类型
+     */
+    public String getOsType() {
+        return osType;
+    }
+
+    /**
+     * 主机的系统类型
+     */
+    public void setOsType(String osType) {
+        this.osType = osType;
+    }
+
+    /**
+     * 主机的操作系统名字
      */
     public String getOsName() {
         return osName;
     }
 
     /**
-     * 
+     * 主机的操作系统名字
      */
     public void setOsName(String osName) {
         this.osName = osName;
     }
 
     /**
-     * 
+     * 主机操作系统版本号
      */
     public String getOsVersion() {
         return osVersion;
     }
 
     /**
-     * 
+     * 主机操作系统版本号
      */
     public void setOsVersion(String osVersion) {
         this.osVersion = osVersion;
     }
 
     /**
-     * 
+     * 主机操作系统位数
      */
-    public String getOsArch() {
-        return osArch;
+    public String getOsBit() {
+        return osBit;
     }
 
     /**
-     * 
+     * 主机操作系统位数
      */
-    public void setOsArch(String osArch) {
-        this.osArch = osArch;
+    public void setOsBit(String osBit) {
+        this.osBit = osBit;
     }
 
     /**
-     * 
+     * cpu名字
      */
     public String getCpuName() {
         return cpuName;
     }
 
     /**
-     * 
+     * cpu名字
      */
     public void setCpuName(String cpuName) {
         this.cpuName = cpuName;
     }
 
     /**
-     * 
+     * 主机内存大小
      */
     public String getRam() {
         return ram;
     }
 
     /**
-     * 
+     * 主机内存大小
      */
     public void setRam(String ram) {
         this.ram = ram;
     }
 
     /**
-     * 1zaixai,0buzai
-
+     * 主机状态：1在线 0下线
      */
     public Integer getStatus() {
         return status;
     }
 
     /**
-     * 1zaixai,0buzai
-
+     * 主机状态：1在线 0下线
      */
     public void setStatus(Integer status) {
         this.status = status;
     }
 
     /**
-     * 
+     * 创建时间
      */
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
     /**
-     * 
+     * 创建时间
      */
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     /**
-     * 
+     * 更新时间
      */
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
     /**
-     * 
+     * 更新时间
      */
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
@@ -251,17 +267,18 @@ public class Host {
         }
         Host other = (Host) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getMac() == null ? other.getMac() == null : this.getMac().equals(other.getMac()))
-            && (this.getHostname() == null ? other.getHostname() == null : this.getHostname().equals(other.getHostname()))
-            && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
+            && (this.getMacAddress() == null ? other.getMacAddress() == null : this.getMacAddress().equals(other.getMacAddress()))
+            && (this.getHostName() == null ? other.getHostName() == null : this.getHostName().equals(other.getHostName()))
+            && (this.getIpAddress() == null ? other.getIpAddress() == null : this.getIpAddress().equals(other.getIpAddress()))
+            && (this.getOsType() == null ? other.getOsType() == null : this.getOsType().equals(other.getOsType()))
             && (this.getOsName() == null ? other.getOsName() == null : this.getOsName().equals(other.getOsName()))
             && (this.getOsVersion() == null ? other.getOsVersion() == null : this.getOsVersion().equals(other.getOsVersion()))
-            && (this.getOsArch() == null ? other.getOsArch() == null : this.getOsArch().equals(other.getOsArch()))
+            && (this.getOsBit() == null ? other.getOsBit() == null : this.getOsBit().equals(other.getOsBit()))
             && (this.getCpuName() == null ? other.getCpuName() == null : this.getCpuName().equals(other.getCpuName()))
             && (this.getRam() == null ? other.getRam() == null : this.getRam().equals(other.getRam()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getCreatetime() == null ? other.getCreatetime() == null : this.getCreatetime().equals(other.getCreatetime()))
-            && (this.getUpdatetime() == null ? other.getUpdatetime() == null : this.getUpdatetime().equals(other.getUpdatetime()));
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
@@ -269,17 +286,18 @@ public class Host {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getMac() == null) ? 0 : getMac().hashCode());
-        result = prime * result + ((getHostname() == null) ? 0 : getHostname().hashCode());
-        result = prime * result + ((getIp() == null) ? 0 : getIp().hashCode());
+        result = prime * result + ((getMacAddress() == null) ? 0 : getMacAddress().hashCode());
+        result = prime * result + ((getHostName() == null) ? 0 : getHostName().hashCode());
+        result = prime * result + ((getIpAddress() == null) ? 0 : getIpAddress().hashCode());
+        result = prime * result + ((getOsType() == null) ? 0 : getOsType().hashCode());
         result = prime * result + ((getOsName() == null) ? 0 : getOsName().hashCode());
         result = prime * result + ((getOsVersion() == null) ? 0 : getOsVersion().hashCode());
-        result = prime * result + ((getOsArch() == null) ? 0 : getOsArch().hashCode());
+        result = prime * result + ((getOsBit() == null) ? 0 : getOsBit().hashCode());
         result = prime * result + ((getCpuName() == null) ? 0 : getCpuName().hashCode());
         result = prime * result + ((getRam() == null) ? 0 : getRam().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        result = prime * result + ((getCreatetime() == null) ? 0 : getCreatetime().hashCode());
-        result = prime * result + ((getUpdatetime() == null) ? 0 : getUpdatetime().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
     }
 
@@ -290,17 +308,18 @@ public class Host {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", mac=").append(mac);
-        sb.append(", hostname=").append(hostname);
-        sb.append(", ip=").append(ip);
+        sb.append(", macAddress=").append(macAddress);
+        sb.append(", hostName=").append(hostName);
+        sb.append(", ipAddress=").append(ipAddress);
+        sb.append(", osType=").append(osType);
         sb.append(", osName=").append(osName);
         sb.append(", osVersion=").append(osVersion);
-        sb.append(", osArch=").append(osArch);
+        sb.append(", osBit=").append(osBit);
         sb.append(", cpuName=").append(cpuName);
         sb.append(", ram=").append(ram);
         sb.append(", status=").append(status);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", updatetime=").append(updatetime);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
         sb.append("]");
         return sb.toString();
     }

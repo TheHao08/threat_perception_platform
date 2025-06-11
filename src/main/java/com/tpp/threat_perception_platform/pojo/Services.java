@@ -233,4 +233,9 @@ public class Services {
         sb.append("]");
         return sb.toString();
     }
+    // 在 Services.java 里
+    private Boolean danger;
+
+    public Boolean getDanger() { return danger; }
+    public void setDanger(Boolean danger) { this.danger = danger; }
 }
