@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>探测资产详情</title>
+  <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="/layui/layuiAdmin/css/admin.css" media="all">
+</head>
+<body class="layui-fluid" style="padding: 20px">
+
+<!-- 主机信息 -->
+<fieldset class="layui-elem-field">
+  <legend>主机信息</legend>
+  <div class="layui-field-box">
+    <table class="layui-table">
+      <colgroup>
+        <col width="120">
+        <col>
+        <col width="120">
+        <col>
+      </colgroup>
+      <tbody>
+      <tr>
+        <td><strong>主机名</strong></td>
+        <td id="hostName">-</td>
+        <td><strong>MAC地址</strong></td>
+        <td id="macAddress">-</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</fieldset>
+
+<!-- 主机账户信息 -->
+<fieldset class="layui-elem-field">
+  <legend>主机账户信息</legend>
+  <div class="layui-field-box">
+    <table class="layui-table" id="accountTable" lay-filter="accountTable"></table>
+  </div>
+</fieldset>
+
+<!-- 主机服务信息 -->
+<fieldset class="layui-elem-field">
+  <legend>主机服务信息</legend>
+  <div class="layui-field-box">
+    <table class="layui-table" id="serviceTable" lay-filter="serviceTable"></table>
+  </div>
+</fieldset>
+
+<!-- 主机进程信息 -->
+<fieldset class="layui-elem-field">
+  <legend>主机进程信息</legend>
+  <div class="layui-field-box">
+    <table class="layui-table" id="processTable" lay-filter="processTable"></table>
+  </div>
+</fieldset>
+
+<!-- 主机应用信息 -->
+<fieldset class="layui-elem-field">
+  <legend>主机应用信息</legend>
+  <div class="layui-field-box">
+    <table class="layui-table" id="appTable" lay-filter="appTable"></table>
+  </div>
+</fieldset>
+
+<script src="/layui/layui.js"></script>
+
+
+
+<script>
+  layui.use(['table', 'form'], function(){
+    var table = layui.table, $ = layui.$;
+
+    var mac = new URLSearchParams(location.search).get('mac');
+
+    // 主机信息回显
+    $.ajax({
+      url: '/host/info',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify({ macAddress: mac }),
+      headers: {
+        'Authorization': localStorage.getItem('token')
+      },
+      success: function(res) {
+        const info = res.data?.[0] || {};
+        $('#hostName').text(info.host_name || '-');
+        $('#macAddress').text(info.mac_address || '-');
+      }
+    });
+
+
+    function renderTable(tableId, url, cols){
+      table.render({
+        elem: `#${tableId}`,
+        method: 'post',
+        url: url,
+        contentType: "application/json",
+        data: JSON.stringify({ macAddress: mac }),
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        },
+        parseData: function(res) {
+          return {
+            code: res.code,
+            msg: res.msg,
+            count: res.data?.length || 0,  // 即使不分页，也需要提供 count
+            data: res.data
+          };
+        },
+        page: false,
+        cols: [cols]
+      });
+    }
+
+
+
+    // account 表字段
+    renderTable('accountTable', '/host/accountList', [
+      {field:'name', title:'账户名'},
+      {field:'full_name', title:'全名'},
+      {field:'sid', title:'SID'},
+      {field:'sid_type', title:'SID类型'},
+      {field:'status', title:'状态'},
+      {field:'disabled', title:'禁用'},
+      {field:'lockout', title:'锁定'},
+      {field:'password_changeable', title:'密码可改'},
+      {field:'password_expires', title:'密码过期'},
+      {field:'password_required', title:'需要密码'}
+    ]);
+
+    // services 表字段
+    renderTable('serviceTable', '/host/serviceList', [
+      {field:'protocol', title:'协议'},
+      {field:'port', title:'端口'},
+      {field:'state', title:'状态'},
+      {field:'name', title:'服务名'},
+      {field:'product', title:'产品'},
+      {field:'version', title:'版本'},
+      {field:'extrainfo', title:'附加信息'}
+    ]);
+
+    // processes 表字段
+    renderTable('processTable', '/host/processList', [
+      {field:'pid', title:'PID'},
+      {field:'ppid', title:'父PID'},
+      {field:'name', title:'进程名'},
+      {field:'cmd', title:'命令行'},
+      {field:'priority', title:'优先级'},
+      {field:'description', title:'描述'}
+    ]);
+
+    // app 表字段
+    renderTable('appTable', '/host/appList', [
+      {field:'display_name', title:'程序名'},
+      {field:'install_location', title:'安装路径'},
+      {field:'uninstall_string', title:'卸载命令'}
+    ]);
+  });
+</script>
+</body>
+</html>
