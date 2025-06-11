@@ -113,4 +113,39 @@ public class JwtUtil {
 //        System.out.println(claims);
 //        System.out.println(claims.getSubject());
     }
+
+
+
+
+    // 设置刷新阈值为5分钟（毫秒）
+    public static final Long JWT_REFRESH_THRESHOLD = 5 * 60 * 1000L;
+
+    /**
+     * 判断token是否需要刷新
+     */
+    public static boolean shouldRefresh(String token) {
+        try {
+            Claims claims = parseJWT(token);
+            Date expiration = claims.getExpiration();
+            long remainTime = expiration.getTime() - System.currentTimeMillis();
+            return remainTime < JWT_REFRESH_THRESHOLD;
+        } catch (Exception e) {
+            // 如果token解析失败，则不刷新
+            return false;
+        }
+    }
+
+    /**
+     * 根据旧token生成新token（保持subject不变）
+     */
+    public static String refreshJWT(String token) {
+        try {
+            Claims claims = parseJWT(token);
+            String subject = claims.getSubject();
+            return createJWT(subject); // 重新生成新token，使用默认过期时间
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

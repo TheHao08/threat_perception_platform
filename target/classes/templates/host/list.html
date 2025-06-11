@@ -82,6 +82,18 @@
 <script src="/layui/layui.js"></script>
 
 
+<script type="text/javascript">
+    // 通用 token 刷新处理：从响应头中提取新 token（如果有）并覆盖本地保存
+    function checkAndUpdateToken(xhr) {
+        const newToken = xhr.getResponseHeader("Authorization");
+        if (newToken) {
+            localStorage.setItem('token', newToken);
+            console.log("✅ Token 已自动刷新并更新");
+        }
+    }
+</script>
+
+
 
 
 <script type="text/javascript">
@@ -185,13 +197,15 @@
                         contentType: "application/json", // ✅ 指定内容类型
                         data: JSON.stringify({ id: data.id }), // ✅ 传入id
                         dataType:"json", //后端返回参数类型
-                        success:function (res){ //请求成功后回调函数res = JSONObject.toJSONString(resultMap)
-                            if(res.code == 0){//成功
-                                layer.msg(res.msg);//弹出提示
-                                table.reload('LAY-user-manage'); //数据刷新
-                                layer.close(index); //关闭弹层
-                            }else {
-                                layer.msg(res.msg,{icon: 5});//弹出提示
+                        success:function (res, status, xhr){
+                            checkAndUpdateToken(xhr);
+
+                            if(res.code == 0){
+                                layer.msg(res.msg);
+                                table.reload('LAY-user-manage');
+                                layer.close(index);
+                            } else {
+                                layer.msg(res.msg, {icon: 5});
                             }
                         }
                     })
@@ -298,6 +312,10 @@
                 where: payload,
                 page: {
                     curr: 1
+                },
+                done: function(res, curr, count){
+                    const xhr = this.xhr; // layui.table 提供了 xhr 对象
+                    checkAndUpdateToken(xhr);  // ← 🔁 加这一行
                 }
             });
 

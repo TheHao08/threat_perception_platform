@@ -55,6 +55,17 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                     new UsernamePasswordAuthenticationToken(loginUser, null, null);
             // 存入SecurityContextHolder
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+
+            // 判断是否需要刷新 token
+            if (JwtUtil.shouldRefresh(token)) {
+                String newToken = JwtUtil.refreshJWT(token);
+                if (newToken != null) {
+                    response.setHeader("Authorization", newToken);
+                    response.setHeader("Access-Control-Expose-Headers", "Authorization");
+                }
+            }
+
             // 放行
             filterChain.doFilter(request, response);
         } catch (Exception e) {
