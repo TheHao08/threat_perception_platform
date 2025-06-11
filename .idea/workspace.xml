@@ -4,107 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9024359b-19e9-4649-b5e1-518988cf9c3c" name="更改" comment="更改">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/config/RabbitMQConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/host/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/RabbitMQConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/pojo/UserDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/host/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/consumer/RabbitSysInfoConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/consumer/RabbitSysInfoConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/controller/HostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/controller/HostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/AccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/AccountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/AppMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/AppMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/HostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/HostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/ProcessesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/ProcessesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/RoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/ServicesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/ServicesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/param/AssetsParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/param/AssetsParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/param/MyParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/param/MyParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/Host.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/Host.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/Services.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/Services.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/response/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/response/ResponseResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/AppService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/AppService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/HostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/HostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/ProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/ProcessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/RabbitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/RabbitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/ServicesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/ServicesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/AppServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/AppServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/HostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/HostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/ProcessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/ProcessServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/RabbitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/RabbitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/ServicesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/ServicesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AppMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AppMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/HostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/HostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ProcessesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProcessesMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ServicesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ServicesMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/host/assets.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/host/assets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/host/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/host/details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/host/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/host/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/role/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/role/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/role/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/role/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/role/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/role/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/RabbitMqConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/RabbitMqConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/config/WebMvcConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/consumer/RabbitSysInfoConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/consumer/RabbitSysInfoConsumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/controller/HostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/controller/HostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/controller/RoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/dao/HostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/dao/HostMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/dao/RoleMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/dao/RoleMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/dao/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/param/AssetsParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/param/AssetsParam.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/param/MyParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/param/MyParam.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/pojo/Host.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/pojo/Host.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/pojo/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/pojo/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/response/ResponseResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/response/ResponseResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/HostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/HostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/RabbitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/RabbitService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/RoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/RoleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/HostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/HostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/RabbitServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/RabbitServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/RoleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/RoleServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tpp/threat_perception_platform/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/HostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/HostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/host/assets.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/host/assets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/host/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/host/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/role/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/role/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/role/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/role/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/role/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/role/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/list.html" afterDir="false" />
-    </list>
+    <list default="true" id="9024359b-19e9-4649-b5e1-518988cf9c3c" name="更改" comment="解决冲突" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,7 +128,7 @@
       <workItem from="1749631268727" duration="884000" />
       <workItem from="1749632173719" duration="3000" />
       <workItem from="1749632185391" duration="401000" />
-      <workItem from="1749635886045" duration="1361000" />
+      <workItem from="1749635886045" duration="1749000" />
     </task>
     <task id="LOCAL-00001" summary="更改">
       <option name="closed" value="true" />
@@ -238,7 +138,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749636518799</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="解决冲突">
+      <option name="closed" value="true" />
+      <created>1749637448125</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749637448125</updated>
+    </task>
+    <task id="LOCAL-00003" summary="解决冲突">
+      <option name="closed" value="true" />
+      <created>1749637575784</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749637575784</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +171,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="lyh/feature" />
+                        <option value="origin/lyh/feature" />
                       </list>
                     </value>
                   </entry>
@@ -269,14 +185,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更改" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改" />
+    <MESSAGE value="解决冲突" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决冲突" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/tpp/threat_perception_platform/service/impl/HostServiceImpl.java</url>
-          <line>64</line>
+          <line>41</line>
           <properties field="accountMapper" class="com.tpp.threat_perception_platform.service.impl.HostServiceImpl" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
