@@ -5,9 +5,9 @@
 <mapper namespace="com.tpp.threat_perception_platform.dao.RoleMapper">
 
     <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.Role">
-            <id property="roleId" column="role_id" jdbcType="INTEGER"/>
-            <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
-            <result property="roleDesc" column="role_desc" jdbcType="VARCHAR"/>
+            <id property="roleId" column="role_id" />
+            <result property="roleName" column="role_name" />
+            <result property="roleDesc" column="role_desc" />
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -18,52 +18,32 @@
         select
         <include refid="Base_Column_List" />
         from role
-        where  role_id = #{roleId,jdbcType=INTEGER} 
+        where  role_id = #{roleId} 
     </select>
-
-    <select id="selectByRoleName" resultType="com.tpp.threat_perception_platform.pojo.Role">
-        select
-        <include refid="Base_Column_List" />
-        from role
-        where role_name = #{roleName,jdbcType=VARCHAR} limit 1
-    </select>
-
-    <select id="findAll" resultMap="BaseResultMap">
+    <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.Role">
         select
         <include refid="Base_Column_List" />
         from role
         <where>
-
             <if test="param.keywords != null and param.keywords != ''">
                 and role_name like concat('%',#{param.keywords},'%')
             </if>
-
-            <if test="param.id != 0 and param.id != null">
-                and id=#{param.id}
+            <if test="param.roleId != 0 and param.roleId != null">
+                and role_id = #{param.roleId}
             </if>
         </where>
         order by role_id asc
+
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from role
-        where  role_id = #{roleId,jdbcType=INTEGER} 
+        where  role_id = #{roleId} 
     </delete>
-
-    <delete id="delete">
-        delete from role
-        where  role_id in
-        <foreach collection="ids" item="Id" open="(" separator="," close=")">
-            #{Id}
-        </foreach>
-    </delete>
-
     <insert id="insert" keyColumn="role_id" keyProperty="roleId" parameterType="com.tpp.threat_perception_platform.pojo.Role" useGeneratedKeys="true">
         insert into role
-        ( role_id,role_name,role_desc
-        )
-        values (#{roleId,jdbcType=INTEGER},#{roleName,jdbcType=VARCHAR},#{roleDesc,jdbcType=VARCHAR}
-        )
+        ( role_id,role_name,role_desc)
+        values (#{roleId},#{roleName},#{roleDesc})
     </insert>
     <insert id="insertSelective" keyColumn="role_id" keyProperty="roleId" parameterType="com.tpp.threat_perception_platform.pojo.Role" useGeneratedKeys="true">
         insert into role
@@ -73,28 +53,28 @@
                 <if test="roleDesc != null">role_desc,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-                <if test="roleId != null">#{roleId,jdbcType=INTEGER},</if>
-                <if test="roleName != null">#{roleName,jdbcType=VARCHAR},</if>
-                <if test="roleDesc != null">#{roleDesc,jdbcType=VARCHAR},</if>
+                <if test="roleId != null">#{roleId},</if>
+                <if test="roleName != null">#{roleName},</if>
+                <if test="roleDesc != null">#{roleDesc},</if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.Role">
         update role
         <set>
                 <if test="roleName != null">
-                    role_name = #{roleName,jdbcType=VARCHAR},
+                    role_name = #{roleName},
                 </if>
                 <if test="roleDesc != null">
-                    role_desc = #{roleDesc,jdbcType=VARCHAR},
+                    role_desc = #{roleDesc},
                 </if>
         </set>
-        where   role_id = #{roleId,jdbcType=INTEGER} 
+        where   role_id = #{roleId} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.Role">
         update role
         set 
-            role_name =  #{roleName,jdbcType=VARCHAR},
-            role_desc =  #{roleDesc,jdbcType=VARCHAR}
-        where   role_id = #{roleId,jdbcType=INTEGER} 
+            role_name =  #{roleName},
+            role_desc =  #{roleDesc}
+        where   role_id = #{roleId} 
     </update>
 </mapper>

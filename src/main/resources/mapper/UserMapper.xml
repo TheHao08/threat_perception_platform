@@ -38,33 +38,19 @@
         from user
         where user_name = #{userName,jdbcType=VARCHAR} limit 1
     </select>
-    <!--查询所有-->
-<!--    <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.User">-->
-<!--        select-->
-<!--        <include refid="Base_Column_List2" />-->
-<!--        from user-->
-<!--        <where>-->
-<!--            <if test="param.keywords != null and param.keywords != ''">-->
-<!--                and user_name like concat('%',#{param.keywords},'%')-->
-<!--            </if>-->
-<!--            <if test="param.id != 0 and param.id != null">-->
-<!--                and id=#{param.id}-->
-<!--            </if>-->
-<!--            <if test="param.start != null and param.start != ''">-->
-<!--                and last_login_time &gt;= #{param.start}-->
-<!--            </if>-->
-<!--            <if test="param.end != null and param.end != ''">-->
-<!--                and last_login_time &lt;= #{param.end}-->
-<!--            </if>-->
-<!--        </where>-->
-<!--        order by id asc-->
-<!--    </select>-->
-    <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.UserDto">
+    <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.User">
         select
-        u.id,u.user_name,u.user_status,u.user_role,u.create_time,u.update_time,
-        u.last_login_time, r.role_name
+        u.id,
+        u.user_name,
+        u.user_status,
+        u.user_role,
+        u.create_time,
+        u.update_time,
+        u.last_login_time,
+        r.role_name as userRoleName
         from user u
-        left join role r on u.user_role = r.role_id
+        left join user_role ur on u.id = ur.user_id
+        left join role r on ur.role_id = r.role_id
         <where>
             <if test="param.keywords != null and param.keywords != ''">
                 and u.user_name like concat('%',#{param.keywords},'%')
@@ -79,7 +65,7 @@
                 and u.last_login_time &lt;= #{param.end}
             </if>
         </where>
-        order by u.id asc
+        order by u.id desc
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tpp.threat_perception_platform.dao.DangerProcessMapper">
+
+    <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.DangerProcess">
+            <id property="id" column="id" />
+            <result property="name" column="name" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from danger_process
+        where  id = #{id} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from danger_process
+        where  id = #{id} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.DangerProcess" useGeneratedKeys="true">
+        insert into danger_process
+        ( id,name)
+        values (#{id},#{name})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.DangerProcess" useGeneratedKeys="true">
+        insert into danger_process
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="name != null">name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id},</if>
+                <if test="name != null">#{name},</if>
+        </trim>
+    </insert>
+    <insert id="insertDangerProcess">
+        insert into danger_process(name) values(#{name})
+    </insert>
+    <select id="existsDangerProcess" resultType="int">
+        select count(*) from danger_process where name = #{name}
+    </select>
+    <select id="selectAllDangerProcesses" resultType="java.lang.String">
+        select name from danger_process
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.DangerProcess">
+        update danger_process
+        <set>
+                <if test="name != null">
+                    name = #{name},
+                </if>
+        </set>
+        where   id = #{id} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.DangerProcess">
+        update danger_process
+        set 
+            name =  #{name}
+        where   id = #{id} 
+    </update>
+</mapper>

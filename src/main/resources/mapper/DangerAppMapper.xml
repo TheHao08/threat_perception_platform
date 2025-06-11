@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tpp.threat_perception_platform.dao.DangerAppMapper">
+
+    <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.DangerApp">
+            <id property="id" column="id" />
+            <result property="displayName" column="display_name" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,display_name
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from danger_app
+        where  id = #{id} 
+    </select>
+    <select id="selectAllDangerApps" resultType="java.lang.String">
+        select display_name
+        from danger_app
+    </select>
+    <select id="existsDangerApp" resultType="int">
+        select count(*) from danger_app where display_name = #{displayName}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from danger_app
+        where  id = #{id} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.DangerApp" useGeneratedKeys="true">
+        insert into danger_app
+        ( id,display_name)
+        values (#{id},#{displayName})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.DangerApp" useGeneratedKeys="true">
+        insert into danger_app
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="displayName != null">display_name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id},</if>
+                <if test="displayName != null">#{displayName},</if>
+        </trim>
+    </insert>
+    <insert id="insertDangerApp">
+        insert into danger_app(display_name) values(#{displayName})
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.DangerApp">
+        update danger_app
+        <set>
+                <if test="displayName != null">
+                    display_name = #{displayName},
+                </if>
+        </set>
+        where   id = #{id} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.DangerApp">
+        update danger_app
+        set 
+            display_name =  #{displayName}
+        where   id = #{id} 
+    </update>
+</mapper>
