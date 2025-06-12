@@ -19,6 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/page/user/list").setViewName("user/list");
         registry.addViewController("/page/user/edit").setViewName("user/edit");
         registry.addViewController("/page/user/add").setViewName("user/add");
+<<<<<<< HEAD
         //角色相关页面
         registry.addViewController("/page/role/list").setViewName("role/list");
         registry.addViewController("/page/role/add").setViewName("role/add");
@@ -28,5 +29,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/page/host/list").setViewName("host/list");
         registry.addViewController("/page/host/assets").setViewName("host/assets");
         registry.addViewController("/page/host/details").setViewName("host/details");
+=======
+
+        //角色相关页面
+        registry.addViewController("/page/role/list").setViewName("role/list");
+        registry.addViewController("/page/role/edit").setViewName("role/edit");
+        registry.addViewController("/page/role/add").setViewName("role/add");
+        // 主机相关页面
+        registry.addViewController("/page/host/list").setViewName("host/list");
+        //资产配置
+        registry.addViewController("/page/host/assets").setViewName("host/assets");
+        registry.addViewController("/page/host/assetsDiscovery").setViewName("host/assetsDiscovery");
+        registry.addViewController("/page/host/details").setViewName("host/details");
+
+
+
+>>>>>>> main
     }
 }

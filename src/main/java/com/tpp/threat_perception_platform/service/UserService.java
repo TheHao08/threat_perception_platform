@@ -3,9 +3,12 @@ package com.tpp.threat_perception_platform.service;
 import com.tpp.threat_perception_platform.param.MyParam;
 import com.tpp.threat_perception_platform.pojo.User;
 import com.tpp.threat_perception_platform.response.ResponseResult;
+<<<<<<< HEAD
 import io.lettuce.core.dynamic.annotation.Param;
 
 import java.util.List;
+=======
+>>>>>>> main
 
 /**
  * 用户接口
@@ -45,8 +48,11 @@ public interface UserService {
      * @return
      */
     ResponseResult delete(Integer[] ids);
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> main
 }

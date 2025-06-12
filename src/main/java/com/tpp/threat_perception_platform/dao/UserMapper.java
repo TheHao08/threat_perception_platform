@@ -44,7 +44,10 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
+<<<<<<< HEAD
     List<User> findAllWithRoleName(@Param("param") MyParam param);
 
 
+=======
+>>>>>>> main
 }

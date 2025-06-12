@@ -14,13 +14,20 @@
         role_id,role_name,role_desc
     </sql>
 
+<<<<<<< HEAD
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+=======
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+>>>>>>> main
         select
         <include refid="Base_Column_List" />
         from role
         where  role_id = #{roleId} 
     </select>
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.Role">
         select
         <include refid="Base_Column_List" />
@@ -29,6 +36,7 @@
             <if test="param.keywords != null and param.keywords != ''">
                 and role_name like concat('%',#{param.keywords},'%')
             </if>
+<<<<<<< HEAD
             <if test="param.id != 0 and param.id != null">
                 and role_id=#{param.id}
             </if>
@@ -37,6 +45,17 @@
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+=======
+            <if test="param.roleId != 0 and param.roleId != null">
+                and role_id = #{param.roleId}
+            </if>
+        </where>
+        order by role_id asc
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+>>>>>>> main
         delete from role
         where  role_id = #{roleId} 
     </delete>

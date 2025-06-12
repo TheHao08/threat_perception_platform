@@ -101,7 +101,11 @@
                 {type: 'checkbox', fixed: 'left'}
                 ,{field:'id',title:'ID',width: 80}
                 ,{field:'userName', title:'用户名',width: 100}
+<<<<<<< HEAD
                 ,{field:'roleName', title:'用户角色',width: 100}
+=======
+                ,{field:'userRoleName', title:'用户角色',width: 100}
+>>>>>>> main
                 ,{field:'userStatus', title:'状态',width: 80,templet:function (d){
                     if(d.userStatus === 1){
                         return "<button class='layui-btn layui-btn-normal layui-btn-xs'>正常</button>";
@@ -170,7 +174,11 @@
                         contentWindow.layui.form.val('layuiadmin-form-useradmin', {
                             "id": data.id
                             ,"userName": data.userName
+<<<<<<< HEAD
                             ,"userRole": data.userRole
+=======
+                            ,"userRoleName": data.userRoleName
+>>>>>>> main
                             ,"userStatus": data.userStatus
                         });
 

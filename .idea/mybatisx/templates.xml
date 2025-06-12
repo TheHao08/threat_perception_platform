@@ -27,7 +27,7 @@
                   <option name="fileName" value="${domain.fileName}Mapper" />
                   <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.java" />
                   <option name="modulePath" value="$PROJECT_DIR$" />
-                  <option name="packageName" value="com.tpp.threat_perception_platform.dao" />
+                  <option name="packageName" value="com.tpp.threat_perception_platform.mapper" />
                 </ModuleInfoGo>
                 <ModuleInfoGo>
                   <option name="basePath" value="src/main/resources" />
@@ -49,8 +49,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="Services" />
-                  <option name="tableName" value="services" />
+                  <option name="className" value="Host" />
+                  <option name="tableName" value="host" />
                 </TableUIInfo>
               </list>
             </option>

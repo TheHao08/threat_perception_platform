@@ -24,12 +24,20 @@
 
 <!--表单-->
 <div class="layui-form" lay-filter="layuiadmin-form-useradmin" id="layuiadmin-form-useradmin" style="padding: 20px 0 0 0;">
+<<<<<<< HEAD
 
     <!--  用户名  -->
     <div class="layui-form-item">
         <label class="layui-form-label">主机名字<span class="xinghao">*</span></label>
         <div class="layui-input-inline st">
             <input type="text" name="hostName" readonly lay-verify="required"  autocomplete="off" class="layui-input">
+=======
+    <!--  用户名  -->
+    <div class="layui-form-item">
+        <label class="layui-form-label">主机名<span class="xinghao">*</span></label>
+        <div class="layui-input-inline st">
+            <input type="text" name="hostName" readonly lay-verify="required|hostname"  autocomplete="off" class="layui-input">
+>>>>>>> main
         </div>
     </div>
     <!--  用户角色  -->
@@ -44,11 +52,18 @@
     <div class="layui-form-item">
         <label class="layui-form-label">探测项</label>
         <div class="layui-input-block">
+<<<<<<< HEAD
             <input type="checkbox" name="account" value="1" checked> 账号探测
             <input type="checkbox" name="service" value="1"> 服务探测
             <input type="checkbox" name="process" value="1"> 进程探测
             <input type="checkbox" name="app" value="1"> 应用探测
 
+=======
+            <input type="checkbox" name="account" value="1" checked>账号探测
+            <input type="checkbox" name="service" value="1" checked>服务探测
+            <input type="checkbox" name="process" value="1" checked>进程探测
+            <input type="checkbox" name="app" value="1" checked>应用探测
+>>>>>>> main
         </div>
     </div>
 

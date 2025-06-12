@@ -38,6 +38,7 @@
         from user
         where user_name = #{userName,jdbcType=VARCHAR} limit 1
     </select>
+<<<<<<< HEAD
     <!--查询所有-->
     <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.User">
         select
@@ -58,6 +59,36 @@
             </if>
         </where>
         order by id desc
+=======
+    <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.User">
+        select
+        u.id,
+        u.user_name,
+        u.user_status,
+        u.user_role,
+        u.create_time,
+        u.update_time,
+        u.last_login_time,
+        r.role_name as userRoleName
+        from user u
+        left join user_role ur on u.id = ur.user_id
+        left join role r on ur.role_id = r.role_id
+        <where>
+            <if test="param.keywords != null and param.keywords != ''">
+                and u.user_name like concat('%',#{param.keywords},'%')
+            </if>
+            <if test="param.id != 0 and param.id != null">
+                and u.id=#{param.id}
+            </if>
+            <if test="param.start != null and param.start != ''">
+                and u.last_login_time &gt;= #{param.start}
+            </if>
+            <if test="param.end != null and param.end != ''">
+                and u.last_login_time &lt;= #{param.end}
+            </if>
+        </where>
+        order by u.id desc
+>>>>>>> main
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -142,6 +173,7 @@
             last_login_time =  #{lastLoginTime,jdbcType=TIMESTAMP}
         where   id = #{id,jdbcType=INTEGER} 
     </update>
+<<<<<<< HEAD
 
     <select id="findAllWithRoleName" resultType="com.tpp.threat_perception_platform.pojo.User">
         SELECT
@@ -153,4 +185,6 @@
         ORDER BY u.id DESC
     </select>
 
+=======
+>>>>>>> main
 </mapper>

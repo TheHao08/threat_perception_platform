@@ -24,25 +24,31 @@
 
 <!--表单-->
 <div class="layui-form" lay-filter="layuiadmin-form-roleadmin" id="layuiadmin-form-roleadmin" style="padding: 20px 0 0 0;">
-
-
+    <!--  角色名  -->
     <div class="layui-form-item">
-        <label class="layui-form-label">角色名称<span class="xinghao">*</span></label>
+        <label class="layui-form-label">角色名<span class="xinghao">*</span></label>
         <div class="layui-input-inline st">
-            <input type="text" name="roleName" lay-verify="required|rolename" placeholder="请输入角色名称" autocomplete="off" class="layui-input">
+            <input type="text" name="roleName" lay-verify="required|roleName" placeholder="请输入角色名" autocomplete="off" class="layui-input">
         </div>
     </div>
-
+    <!--  角色描述  -->
     <div class="layui-form-item">
         <label class="layui-form-label">角色描述</label>
         <div class="layui-input-inline st">
             <input type="text" name="roleDesc" placeholder="请输入角色描述" autocomplete="off" class="layui-input">
         </div>
     </div>
-
+<!--    &lt;!&ndash;  状态 &ndash;&gt;-->
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">状态</label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input type="radio" name="status" value="1" title="正常" checked="">-->
+<!--            <input type="radio" name="status" value="2" title="冻结">-->
+<!--        </div>-->
+<!--    </div>-->
     <!--  提交 -->
     <div class="layui-form-item layui-hide">
-        <input type="button" lay-submit lay-filter="LAY-role-front-submit" id="LAY-role-front-submit" value="确认">
+        <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
     </div>
 </div>
 
@@ -52,22 +58,20 @@
         base: '/layui/layuiAdmin/' //静态资源所在路径
     }).extend({
         index: 'lib/index' //主入口模块
-    }).use(['index', 'layer', 'form','layedit','laydate'], function(){
+    }).use(['index', 'layer', 'form'], function(){
         var $ = layui.$
             ,form = layui.form
-            ,layer = layui.layer
-            ,laydate = layui.laydate
-            ,layedit = layui.layedit;
+            ,layer = layui.layer;
 
         //自定义验证规则
         form.verify({
-            rolename: function(value){
-                if(value.length < 2 || value.length > 20){
-                    return '角色名称必须在 2 到 20 个字符之间';
+            roleName: function(value){
+                var reg = /^[\u4e00-\u9fa5a-zA-Z0-9_]{2,16}$/;
+                if(!reg.test(value)){
+                    return '角色名2-16位，允许中英文、数字、下划线';
                 }
             }
         });
-
 
     })
 </script>

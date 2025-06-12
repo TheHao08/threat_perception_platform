@@ -32,7 +32,11 @@ public class UserServiceImpl implements UserService {
         // 设置分页参数
         PageHelper.startPage(param.getPage(), param.getLimit());
         // 查询所有
+<<<<<<< HEAD
         List<User> userList = userMapper.findAllWithRoleName(param);
+=======
+        List<User> userList = userMapper.findAll(param);
+>>>>>>> main
         // 构架pageInfo
         PageInfo<User> pageInfo = new PageInfo<>(userList);
 
@@ -97,7 +101,10 @@ public class UserServiceImpl implements UserService {
         userMapper.delete(ids);
         return new ResponseResult<>(0, "删除成功！");
     }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> main
 }

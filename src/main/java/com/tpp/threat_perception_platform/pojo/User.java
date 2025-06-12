@@ -16,9 +16,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User implements Serializable {
 
+<<<<<<< HEAD
     private String roleName; // 新字段，用来放角色名称
 
 
+=======
+>>>>>>> main
     /**
      * 主键id
      */
@@ -44,6 +47,14 @@ public class User implements Serializable {
     private Integer userRole;
 
     /**
+<<<<<<< HEAD
+=======
+     * 用户角色名称
+     */
+    private String userRoleName;
+
+    /**
+>>>>>>> main
      * 用户创建时间
      */
     private Date createTime;

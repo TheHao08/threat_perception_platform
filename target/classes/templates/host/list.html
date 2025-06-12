@@ -13,28 +13,9 @@
         <div class="layui-form layui-card-header layuiadmin-card-header-auto" style="border-radius: 0;border-top: 4px solid #d2d2d2;">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">搜索主机</label>
+                    <label class="layui-form-label">主机名</label>
                     <div class="layui-input-inline">
-                        <!-- 搜索条件区域 -->
-                        <div class="layui-inline">
-                            <label class="layui-form-label">ID</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="id" placeholder="请输入ID" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">MAC地址</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="macAddress" placeholder="请输入MAC地址" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">主机名</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="hostName" placeholder="请输入主机名" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-
+                        <input type="text" name="keywords" placeholder="请输入主机名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -47,9 +28,9 @@
         <div class="layui-card-body">
 
             <div style="padding-bottom: 10px;">
-
+                <button class="layui-btn layuiadmin-btn-useradmin" data-type="batchdel">删除</button>
+                <button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>
                 <button class="layui-btn layuiadmin-btn-useradmin" data-type="refresh">刷新</button>
-
             </div>
 
             <!--  表格数据加载 -->
@@ -59,9 +40,8 @@
 
             <script type="text/html" id="table-useradmin-webuser">
                 <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="assets"><i class="layui-icon layui-icon-edit"></i>资产探测</a>
-                <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="details"><i class="layui-icon layui-icon-view"></i>查看详情</a>
                 <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
-
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="detail"><i class="layui-icon layui-icon-delete"></i>详情</a>
             </script>
 
 
@@ -80,22 +60,6 @@
 </div>
 
 <script src="/layui/layui.js"></script>
-
-
-<script type="text/javascript">
-    // 通用 token 刷新处理：从响应头中提取新 token（如果有）并覆盖本地保存
-    function checkAndUpdateToken(xhr) {
-        const newToken = xhr.getResponseHeader("Authorization");
-        if (newToken) {
-            localStorage.setItem('token', newToken);
-            console.log("✅ Token 已自动刷新并更新");
-        }
-    }
-</script>
-
-
-
-
 <script type="text/javascript">
     // 日期格式转换函数
     function formatDate(str) {
@@ -112,217 +76,185 @@
         return "";
     }
 </script>
-
 <script type="text/javascript">
-
-
-
-
     layui.config({
         base: '/layui/layuiAdmin/' //静态资源所在路径
     }).extend({
         index: 'lib/index' //主入口模块
-    }).use(['layer','table','form'], function(){
+    }).use(['layer','table','form'], function() {
         var $ = layui.$
-            ,form = layui.form
-            ,layer = layui.layer
-            ,table = layui.table;
+            , form = layui.form
+            , layer = layui.layer
+            , table = layui.table;
 
         //加载table
         table.render({
             elem: '#LAY-user-manage'
-            ,method: 'post'
-            ,url:'/host/list' //后端接口
-            ,headers: {
+            , method: 'post'
+            , url: '/host/list' //后端接口
+            , headers: {
                 'Authorization': localStorage.getItem('token')
             }
-            ,width: 'auto'// 自适应宽度
-            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度
-            ,title: '系统用户数据表'
-            ,cols: [
+            , width: 'auto'// 自适应宽度
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度
+            , title: '主机列表'
+            , cols: [
                 [
-                {type: 'checkbox', fixed: 'left'},
-                { field: 'id', title: 'ID', width: 60 },
-                { field: 'macAddress', title: 'MAC地址', width: 160 },
-                { field: 'hostName', title: '主机名字', width: 160 },
-                { field: 'status', title: '状态', width: 80 ,templet:function (d){
-                        if(d.status === 1){
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', title: 'ID', width: 60}
+                    , {field: 'macAddress', title: 'MAC地址', width: 160}
+                    , {field: 'hostName', title: '主机名字', width: 140}
+                    , {
+                    field: 'status', title: '状态', width: 80, templet: function (d) {
+                        if (d.status === 1) {
                             return "<button class='layui-btn layui-btn-normal layui-btn-xs'>上线</button>";
-                        }else if(d.status === 0){
+                        } else if (d.status === 0) {
                             return "<button class='layui-btn layui-btn-danger layui-btn-xs'>下线</button>";
                         }
-                    }},
-                { field: 'ipAddress', title: 'IP地址', width: 160 },
-                { field: 'osType', title: '系统类型', width: 100 ,templet:function (d){
-                        if(d.osType === "Windows"){
-                            return "<button class='layui-btn layui-btn-normal layui-btn-xs'>"+d.osType+ "</button>";
-                        }else if(d.osType === "Linux"){
-                            return "<button class='layui-btn layui-btn-info layui-btn-xs'>"+d.osType+"</button>";
-                        }else{
-                            return "<button class='layui-btn layui-btn-danger layui-btn-xs'>"+d.osType+ "</button>";
-                        }
-                    }},
-                { field: 'osName', title: '系统版本', width: 270 },
-                { field: 'osVersion', title: '系统版本号', width: 120 },
-                { field: 'osBit', title: '位数', width: 80 },
-                { field: 'cpuName', title: 'CPU', width: 160 },
-                { field: 'ram', title: '内存', width: 80 },
-                {field: 'createTime', title: '采集时间', width: 160, templet: function (d) {
-                        return formatDate(d.createTime);
-                }},
-                {field: 'updateTime', title: '上线时间', width: 160, templet: function (d) {
-                        return d.updateTime == null ? formatDate(d.createTime) : formatDate(d.updateTime);
                     }
                 }
-                ,{fixed: 'right', title:'操作', toolbar: '#table-useradmin-webuser',width:270}
-            ]]
-            ,page: {
+                    , {field: 'ipAddress', title: 'IP地址', width: 120}
+                    , {
+                    field: 'osType', title: '系统类型', width: 100, templet: function (d) {
+                        if (d.osType === "Windows") {
+                            return "<button class='layui-btn layui-btn-normal layui-btn-xs'>" + d.osType + "</button>";
+                        } else if (d.osType === "Linux") {
+                            return "<button class='layui-btn  layui-btn-xs'>" + d.osType + "</button>";
+                        } else {
+                            return "<button class='layui-btn  layui-btn-xs'>" + d.osType + "</button>";
+                        }
+                    }
+                }
+                    , {field: 'osVersion', title: '系统版本', width: 140}
+                    , {field: 'osBit', title: '位数', width: 80}
+                    , {field: 'cpuName', title: 'CPU', width: 100}
+                    , {field: 'ram', title: '内存', width: 80}
+                    , {
+                    field: 'createTime', title: '采集时间', width: 160, templet: function (d) {
+                        return formatDate(d.createTime);
+                    }
+                }
+                    , {
+                    field: 'updateTime', title: '上线时间', width: 160, templet: function (d) {
+                        return d.updateTime == null ? formatDate(d.createTime) : formatDate(d.updateTime);
+                    }
+                }, {fixed: 'right', title: '操作', toolbar: '#table-useradmin-webuser', width: 240}
+                ]]
+            , page: {
                 curr: 1 //设定初始在第 5 页
-                ,limit: 5 //设定初始每页显示 5 条
+                , limit: 5 //设定初始每页显示 5 条
             },
-            limits:[5,10,15,20]
+            limits: [5, 10, 15, 20]
         });
 
-        //监听行工具事件: 单行删除和资产探测
-        table.on('tool(LAY-user-manage)', function(obj){
+
+        //监听行工具事件: 单行删除和修改
+        table.on('tool(LAY-user-manage)', function (obj) {
             var data = obj.data;
-            if(obj.event === 'del'){
-                layer.confirm('真的删除吗?', function(index){
+            if (obj.event === 'del') {
+                layer.confirm('真的删除吗?', function (index) {
                     $.ajax({
-                        url:"/host/delete", //请求后端接口地址
-                        type:"post", //请求方式get | post
+                        url: "/host/delete", //请求后端接口地址
+                        type: "post", //请求方式get | post
                         headers: {
                             'Authorization': localStorage.getItem('token')
                         },
-                        contentType: "application/json", // ✅ 指定内容类型
-                        data: JSON.stringify({ id: data.id }), // ✅ 传入id
-                        dataType:"json", //后端返回参数类型
-                        success:function (res, status, xhr){
-                            checkAndUpdateToken(xhr);
-
-                            if(res.code == 0){
-                                layer.msg(res.msg);
-                                table.reload('LAY-user-manage');
-                                layer.close(index);
+                        data: {ids: [data.id]}, //数据
+                        dataType: "json", //后端返回参数类型
+                        success: function (res) { //请求成功后回调函数res = JSONObject.toJSONString(resultMap)
+                            if (res.code == 0) {//成功
+                                layer.msg(res.msg);//弹出提示
+                                table.reload('LAY-user-manage'); //数据刷新
+                                layer.close(index); //关闭弹层
                             } else {
-                                layer.msg(res.msg, {icon: 5});
+                                layer.msg(res.msg, {icon: 5});//弹出提示
                             }
                         }
                     })
                 });
-            } else if(obj.event === 'assets'){
+            } else if (obj.event === 'assets') {
                 layer.open({
                     type: 2
-                    ,title: '探测资产'
-                    ,skin: 'layui-layer-molv'
-                    ,content: '/page/host/assets'
-                    ,maxmin: true
-                    ,area: ['480px', '310px']
-                    ,btn: ['确定', '取消']
-                    ,success: function (layero,index){ //弹出层加载之前执行
+                    , title: '探测资产'
+                    , skin: 'layui-layer-molv'
+                    , content: '/page/host/assets'
+                    , maxmin: true
+                    , area: ['480px', '310px']
+                    , btn: ['确定', '取消']
+                    , success: function (layero, index) { //弹出层加载之前执行
                         // 获取选中行的数据
                         // 获取弹出层的表单
-                        var body = layer.getChildFrame("body",index);
+                        var body = layer.getChildFrame("body", index);
                         var contentWindow = layero.find('iframe')[0].contentWindow;//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
                         // 获取编辑表单中用户名元素
                         // 数据回显到弹出的表单中
                         contentWindow.layui.form.val('layuiadmin-form-useradmin', {
-                            "hostName": data.hostName,
-                            "macAddress": data.macAddress
+                            "hostName": data.hostName
+                            , "macAddress": data.macAddress
                         });
 
-
                     }
-                    ,yes: function (index,layero){
-                        var iframeWindow = window['layui-layer-iframe'+ index]
-                            ,submitID = 'LAY-user-front-submit'
-                            ,submit = layero.find('iframe').contents().find('#'+ submitID);
+                    , yes: function (index, layero) {
+                        var iframeWindow = window['layui-layer-iframe' + index]
+                            , submitID = 'LAY-user-front-submit'
+                            , submit = layero.find('iframe').contents().find('#' + submitID);
                         //监听提交--隐藏按钮
-                        iframeWindow.layui.form.on('submit(LAY-user-front-submit)', function(data){
-                            var field = data.field;
+                        iframeWindow.layui.form.on('submit(' + submitID + ')', function (data) {
+                            var field = data.field; //获取提交的字段
                             console.log(field);
+                            //通过Ajax方式将参数提交到后端--保存数据库中
                             $.ajax({
-                                url:"/host/assetsDiscovery",
-                                type:"post",
+                                url: "/host/assetsDiscovery",
+                                type: "post",
                                 headers: {
                                     'Authorization': localStorage.getItem('token')
                                 },
                                 data: JSON.stringify(field),
-                                contentType: "application/json;charset=utf-8",
-                                dataType:"json",
-                                success:function (res){
-                                    if(res.code === 0){
-                                        layer.msg(res.msg);
-                                        table.reload('LAY-user-manage');
-                                        layer.close(index);
-                                    } else {
-                                        layer.msg(res.msg, {icon: 5});
+                                contentType: "application/json;charset=utf-8", //提交参数类型为json格式
+                                dataType: "json",
+                                success: function (res) {
+                                    if (res.code == 0) {//成功
+                                        layer.msg(res.msg);//弹出提示
+                                        table.reload('LAY-user-manage'); //数据刷新
+                                        layer.close(index); //关闭弹层
+                                    } else {//系统出问题
+                                        layer.msg(res.msg, {icon: 5});//弹出提示
                                     }
                                 }
                             })
                         });
-
                         submit.trigger('click');
                     }
 
                 });
-
-            }else if(obj.event === 'details'){
+            }else if(obj.event === 'detail') {
+                // 打开主机详情页面
                 layer.open({
                     type: 2,
-                    title: '主机详情',
-                    content: '/page/host/details?mac=' + data.macAddress, // ✅ 加上参数
-                    area: ['1200px', '800px'],
-                    maxmin: true
+                    title: '主机资产详情',
+                    skin: 'layui-layer-molv',
+                    content: '/page/host/details?macAddress=' + data.macAddress,
+                    maxmin: true,
+                    area: ['1260px', '700px'],
+                    btn:['确定', '取消']
                 });
             }
-
-        })
+        });
 
 
         //监听搜索
         form.on('submit(LAY-sysuser-front-search)', function(data){
             var field = data.field;
-
-            let url = '';
-            let payload = {};
-
-            if (field.id && field.id !== '') {
-                url = '/host/searchById';
-                payload = { id: parseInt(field.id) };
-            } else if (field.macAddress && field.macAddress !== '') {
-                url = '/host/searchByMac';
-                payload = { macAddress: field.macAddress.trim() };
-            } else if (field.hostName && field.hostName !== '') {
-                url = '/host/searchByName';
-                payload = { hostName: field.hostName.trim() };
-            } else {
-                // 如果都为空，回到默认分页列表
-                url = '/host/list';
-                payload = { page: 1, limit: 5 };
-            }
-
+            //执行重载
             table.reload('LAY-user-manage', {
-                url: url,
+                url: '/host/list',
                 method: "post",
-                contentType: "application/json",
                 headers: {
                     'Authorization': localStorage.getItem('token')
                 },
-                where: payload,
-                page: {
-                    curr: 1
-                },
-                done: function(res, curr, count){
-                    const xhr = this.xhr; // layui.table 提供了 xhr 对象
-                    checkAndUpdateToken(xhr);  // ← 🔁 加这一行
-                }
+                where: field
             });
-
-            return false;
         });
-
-
 
         //事件 批量删除，添加用户
         var active = {
@@ -342,7 +274,7 @@
                     })
                     // 提交给后端
                     $.ajax({
-                        url:"/user/delete",
+                        url:"/host/delete",
                         type:"post",
                         headers: {
                             'Authorization': localStorage.getItem('token')
@@ -366,7 +298,7 @@
                     type: 2
                     ,title: '添加用户'
                     ,skin: 'layui-layer-molv'
-                    ,content: '/page/user/add'
+                    ,content: '/page/host/add'
                     ,maxmin: true
                     ,area: ['580px', '350px']
                     ,btn: ['确定', '取消']
@@ -402,17 +334,17 @@
                     }
 
                 });
+            },refresh: function(){
+                // 刷新表格数据
+                table.reload('LAY-user-manage', {
+                    url: '/host/list',
+                    method: "post",
+                    headers: {
+                        'Authorization': localStorage.getItem('token')
+                    }
+                });
             }
-            ,refresh: function () {
-                    table.reload('LAY-user-manage', {
-                        url: '/host/list',
-                        method: 'post',
-                        headers: {
-                            'Authorization': localStorage.getItem('token')
-                        }
-                    });
-                }
-            };
+        };
 
         $('.layui-btn.layuiadmin-btn-useradmin').on('click', function(){
             var type = $(this).data('type');

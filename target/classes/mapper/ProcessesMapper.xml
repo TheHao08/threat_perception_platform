@@ -5,14 +5,14 @@
 <mapper namespace="com.tpp.threat_perception_platform.dao.ProcessesMapper">
 
     <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.Processes">
-        <id property="id" column="id" />
-        <result property="macAddress" column="mac_address" />
-        <result property="pid" column="pid" />
-        <result property="ppid" column="ppid" />
-        <result property="name" column="name" />
-        <result property="cmd" column="cmd" />
-        <result property="priority" column="priority" />
-        <result property="description" column="description" />
+            <id property="id" column="id" />
+            <result property="macAddress" column="mac_address" />
+            <result property="pid" column="pid" />
+            <result property="ppid" column="ppid" />
+            <result property="name" column="name" />
+            <result property="cmd" column="cmd" />
+            <result property="priority" column="priority" />
+            <result property="description" column="description" />
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -24,7 +24,7 @@
         select
         <include refid="Base_Column_List" />
         from processes
-        where  id = #{id}
+        where  id = #{id} 
     </select>
 
     <select id="selectByMacAddressAndPid" resultType="com.tpp.threat_perception_platform.pojo.Processes">
@@ -33,71 +33,77 @@
         from processes
         where mac_address = #{macAddress} and pid = #{pid}
     </select>
+    <select id="selectByMacAddress" resultType="com.tpp.threat_perception_platform.pojo.Processes">
+        select
+        <include refid="Base_Column_List" />
+        from processes
+        where mac_address = #{macAddress}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from processes
-        where  id = #{id}
+        where  id = #{id} 
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.Processes" useGeneratedKeys="true">
         insert into processes
         ( id,mac_address,pid,ppid,name,cmd,
-          priority,description)
+        priority,description)
         values (#{id},#{macAddress},#{pid},#{ppid},#{name},#{cmd},
-                #{priority},#{description})
+        #{priority},#{description})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.Processes" useGeneratedKeys="true">
         insert into processes
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">id,</if>
-            <if test="macAddress != null">mac_address,</if>
-            <if test="pid != null">pid,</if>
-            <if test="ppid != null">ppid,</if>
-            <if test="name != null">name,</if>
-            <if test="cmd != null">cmd,</if>
-            <if test="priority != null">priority,</if>
-            <if test="description != null">description,</if>
+                <if test="id != null">id,</if>
+                <if test="macAddress != null">mac_address,</if>
+                <if test="pid != null">pid,</if>
+                <if test="ppid != null">ppid,</if>
+                <if test="name != null">name,</if>
+                <if test="cmd != null">cmd,</if>
+                <if test="priority != null">priority,</if>
+                <if test="description != null">description,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">#{id},</if>
-            <if test="macAddress != null">#{macAddress},</if>
-            <if test="pid != null">#{pid},</if>
-            <if test="ppid != null">#{ppid},</if>
-            <if test="name != null">#{name},</if>
-            <if test="cmd != null">#{cmd},</if>
-            <if test="priority != null">#{priority},</if>
-            <if test="description != null">#{description},</if>
+                <if test="id != null">#{id},</if>
+                <if test="macAddress != null">#{macAddress},</if>
+                <if test="pid != null">#{pid},</if>
+                <if test="ppid != null">#{ppid},</if>
+                <if test="name != null">#{name},</if>
+                <if test="cmd != null">#{cmd},</if>
+                <if test="priority != null">#{priority},</if>
+                <if test="description != null">#{description},</if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.Processes">
         update processes
         <set>
-            <if test="macAddress != null">
-                mac_address = #{macAddress},
-            </if>
-            <if test="pid != null">
-                pid = #{pid},
-            </if>
-            <if test="ppid != null">
-                ppid = #{ppid},
-            </if>
-            <if test="name != null">
-                name = #{name},
-            </if>
-            <if test="cmd != null">
-                cmd = #{cmd},
-            </if>
-            <if test="priority != null">
-                priority = #{priority},
-            </if>
-            <if test="description != null">
-                description = #{description},
-            </if>
+                <if test="macAddress != null">
+                    mac_address = #{macAddress},
+                </if>
+                <if test="pid != null">
+                    pid = #{pid},
+                </if>
+                <if test="ppid != null">
+                    ppid = #{ppid},
+                </if>
+                <if test="name != null">
+                    name = #{name},
+                </if>
+                <if test="cmd != null">
+                    cmd = #{cmd},
+                </if>
+                <if test="priority != null">
+                    priority = #{priority},
+                </if>
+                <if test="description != null">
+                    description = #{description},
+                </if>
         </set>
-        where   id = #{id}
+        where   id = #{id} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.Processes">
         update processes
-        set
+        set 
             mac_address =  #{macAddress},
             pid =  #{pid},
             ppid =  #{ppid},
@@ -105,21 +111,6 @@
             cmd =  #{cmd},
             priority =  #{priority},
             description =  #{description}
-        where   id = #{id}
+        where   id = #{id} 
     </update>
-
-
-    <select id="selectListByMac" parameterType="string" resultType="com.tpp.threat_perception_platform.pojo.Processes">
-        SELECT
-            id,
-            mac_address,
-            pid,
-            ppid,
-            name,
-            cmd,
-            priority,
-            description
-        FROM processes
-        WHERE mac_address = #{macAddress}
-    </select>
 </mapper>

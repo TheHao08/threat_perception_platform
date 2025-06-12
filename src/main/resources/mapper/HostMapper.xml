@@ -6,9 +6,15 @@
 
     <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.Host">
             <id property="id" column="id" />
+<<<<<<< HEAD
             <result property="hostName" column="host_name" />
             <result property="ipAddress" column="ip_address" />
             <result property="macAddress" column="mac_address" />
+=======
+            <result property="macAddress" column="mac_address" />
+            <result property="hostName" column="host_name" />
+            <result property="ipAddress" column="ip_address" />
+>>>>>>> main
             <result property="osType" column="os_type" />
             <result property="osName" column="os_name" />
             <result property="osVersion" column="os_version" />
@@ -21,7 +27,11 @@
     </resultMap>
 
     <sql id="Base_Column_List">
+<<<<<<< HEAD
         id,host_name,ip_address,mac_address,os_type,os_name,
+=======
+        id,mac_address,host_name,ip_address,os_type,os_name,
+>>>>>>> main
         os_version,os_bit,cpu_name,ram,status,
         create_time,update_time
     </sql>
@@ -36,6 +46,7 @@
         select
         <include refid="Base_Column_List" />
         from host
+<<<<<<< HEAD
         where  mac_address = #{macAddress}
     </select>
 
@@ -64,6 +75,16 @@
         </if>
     </select>
 
+=======
+        where mac_address = #{macAddress}
+    </select>
+    <select id="findAll" resultType="com.tpp.threat_perception_platform.pojo.Host">
+        select
+        <include refid="Base_Column_List" />
+        from host order by id desc
+
+    </select>
+>>>>>>> main
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from host
@@ -71,10 +92,17 @@
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.Host" useGeneratedKeys="true">
         insert into host
+<<<<<<< HEAD
         ( id,host_name,ip_address,mac_address,os_type,os_name,
         os_version,os_bit,cpu_name,ram,status,
         create_time,update_time)
         values (#{id},#{hostName},#{ipAddress},#{macAddress},#{osType},#{osName},
+=======
+        ( id,mac_address,host_name,ip_address,os_type,os_name,
+        os_version,os_bit,cpu_name,ram,status,
+        create_time,update_time)
+        values (#{id},#{macAddress},#{hostName},#{ipAddress},#{osType},#{osName},
+>>>>>>> main
         #{osVersion},#{osBit},#{cpuName},#{ram},#{status},
         #{createTime},#{updateTime})
     </insert>
@@ -82,9 +110,15 @@
         insert into host
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="id != null">id,</if>
+<<<<<<< HEAD
                 <if test="hostName != null">host_name,</if>
                 <if test="ipAddress != null">ip_address,</if>
                 <if test="macAddress != null">mac_address,</if>
+=======
+                <if test="macAddress != null">mac_address,</if>
+                <if test="hostName != null">host_name,</if>
+                <if test="ipAddress != null">ip_address,</if>
+>>>>>>> main
                 <if test="osType != null">os_type,</if>
                 <if test="osName != null">os_name,</if>
                 <if test="osVersion != null">os_version,</if>
@@ -97,9 +131,15 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
                 <if test="id != null">#{id},</if>
+<<<<<<< HEAD
                 <if test="hostName != null">#{hostName},</if>
                 <if test="ipAddress != null">#{ipAddress},</if>
                 <if test="macAddress != null">#{macAddress},</if>
+=======
+                <if test="macAddress != null">#{macAddress},</if>
+                <if test="hostName != null">#{hostName},</if>
+                <if test="ipAddress != null">#{ipAddress},</if>
+>>>>>>> main
                 <if test="osType != null">#{osType},</if>
                 <if test="osName != null">#{osName},</if>
                 <if test="osVersion != null">#{osVersion},</if>
@@ -114,15 +154,24 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.Host">
         update host
         <set>
+<<<<<<< HEAD
+=======
+                <if test="macAddress != null">
+                    mac_address = #{macAddress},
+                </if>
+>>>>>>> main
                 <if test="hostName != null">
                     host_name = #{hostName},
                 </if>
                 <if test="ipAddress != null">
                     ip_address = #{ipAddress},
                 </if>
+<<<<<<< HEAD
                 <if test="macAddress != null">
                     mac_address = #{macAddress},
                 </if>
+=======
+>>>>>>> main
                 <if test="osType != null">
                     os_type = #{osType},
                 </if>
@@ -156,9 +205,15 @@
     <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.Host">
         update host
         set 
+<<<<<<< HEAD
             host_name =  #{hostName},
             ip_address =  #{ipAddress},
             mac_address =  #{macAddress},
+=======
+            mac_address =  #{macAddress},
+            host_name =  #{hostName},
+            ip_address =  #{ipAddress},
+>>>>>>> main
             os_type =  #{osType},
             os_name =  #{osName},
             os_version =  #{osVersion},
@@ -168,6 +223,7 @@
             status =  #{status},
             create_time =  #{createTime},
             update_time =  #{updateTime}
+<<<<<<< HEAD
         where   id = #{id} 
     </update>
     <update id="updateByMacAddress" parameterType="Host" >
@@ -186,4 +242,18 @@
     </select>
 
 
+=======
+        where   id = #{id}
+    </update>
+    <update id="updateStatusOffline">
+        update host set status = 0
+        where update_time &lt; #{time} and status = 1
+    </update>
+    <update id="updateByMacAddress" parameterType="Host">
+        update host set
+                status = #{status},
+                update_time = #{updateTime}
+        where mac_address = #{macAddress}
+    </update>
+>>>>>>> main
 </mapper>

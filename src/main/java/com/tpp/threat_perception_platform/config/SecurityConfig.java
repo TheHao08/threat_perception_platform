@@ -53,6 +53,10 @@ public class SecurityConfig {
                     //.requestMatchers("/user/logout").permitAll()
                     // 所有页面放行 允许匿名访问
                     auth.requestMatchers("/page/**").anonymous();
+<<<<<<< HEAD
+=======
+                    auth.requestMatchers("/agent/response").anonymous();
+>>>>>>> main
                     auth.requestMatchers("/").anonymous();
                     // CSS/JS/IMG/LIB/FONTS放行
                     auth.requestMatchers("/css/**").anonymous();

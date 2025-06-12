@@ -14,11 +14,19 @@ public class MyParam {
     /**
      * 页码
      */
+<<<<<<< HEAD
     private Integer page;
     /**
      * 限制
      */
     private Integer limit;
+=======
+    private Integer page=1;
+    /**
+     * 限制
+     */
+    private Integer limit=5;
+>>>>>>> main
     /**
      * 开始时间
      */
@@ -35,5 +43,16 @@ public class MyParam {
      * 数据ID
      */
     private Integer id;
+<<<<<<< HEAD
+=======
+    /**
+     * 角色ID
+     */
+    private Integer roleId;
+    // 在 MyParam.java 中添加
+    private String macAddress;
+
+
+>>>>>>> main
 
 }

@@ -5,11 +5,19 @@
 <mapper namespace="com.tpp.threat_perception_platform.dao.AppMapper">
 
     <resultMap id="BaseResultMap" type="com.tpp.threat_perception_platform.pojo.App">
+<<<<<<< HEAD
         <id property="id" column="id" />
         <result property="macAddress" column="mac_address" />
         <result property="displayName" column="display_name" />
         <result property="installLocation" column="install_location" />
         <result property="uninstallString" column="uninstall_string" />
+=======
+            <id property="id" column="id" />
+            <result property="macAddress" column="mac_address" />
+            <result property="displayName" column="display_name" />
+            <result property="installLocation" column="install_location" />
+            <result property="uninstallString" column="uninstall_string" />
+>>>>>>> main
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -20,7 +28,11 @@
         select
         <include refid="Base_Column_List" />
         from app
+<<<<<<< HEAD
         where  id = #{id}
+=======
+        where  id = #{id} 
+>>>>>>> main
     </select>
     <select id="selectByMacAddressAndDisplayName" resultType="com.tpp.threat_perception_platform.pojo.App">
         select
@@ -28,6 +40,7 @@
         from app
         where mac_address = #{macAddress} and display_name = #{displayName}
     </select>
+<<<<<<< HEAD
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from app
@@ -36,11 +49,28 @@
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.App" useGeneratedKeys="true">
         insert into app
             ( id,mac_address,display_name,install_location,uninstall_string)
+=======
+    <select id="selectByMacAddress" resultType="com.tpp.threat_perception_platform.pojo.App">
+        select
+        <include refid="Base_Column_List" />
+        from app
+        where mac_address = #{macAddress}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from app
+        where  id = #{id} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.App" useGeneratedKeys="true">
+        insert into app
+        ( id,mac_address,display_name,install_location,uninstall_string)
+>>>>>>> main
         values (#{id},#{macAddress},#{displayName},#{installLocation},#{uninstallString})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tpp.threat_perception_platform.pojo.App" useGeneratedKeys="true">
         insert into app
         <trim prefix="(" suffix=")" suffixOverrides=",">
+<<<<<<< HEAD
             <if test="id != null">id,</if>
             <if test="macAddress != null">mac_address,</if>
             <if test="displayName != null">display_name,</if>
@@ -53,11 +83,26 @@
             <if test="displayName != null">#{displayName},</if>
             <if test="installLocation != null">#{installLocation},</if>
             <if test="uninstallString != null">#{uninstallString},</if>
+=======
+                <if test="id != null">id,</if>
+                <if test="macAddress != null">mac_address,</if>
+                <if test="displayName != null">display_name,</if>
+                <if test="installLocation != null">install_location,</if>
+                <if test="uninstallString != null">uninstall_string,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id},</if>
+                <if test="macAddress != null">#{macAddress},</if>
+                <if test="displayName != null">#{displayName},</if>
+                <if test="installLocation != null">#{installLocation},</if>
+                <if test="uninstallString != null">#{uninstallString},</if>
+>>>>>>> main
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.tpp.threat_perception_platform.pojo.App">
         update app
         <set>
+<<<<<<< HEAD
             <if test="macAddress != null">
                 mac_address = #{macAddress},
             </if>
@@ -76,10 +121,31 @@
     <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.App">
         update app
         set
+=======
+                <if test="macAddress != null">
+                    mac_address = #{macAddress},
+                </if>
+                <if test="displayName != null">
+                    display_name = #{displayName},
+                </if>
+                <if test="installLocation != null">
+                    install_location = #{installLocation},
+                </if>
+                <if test="uninstallString != null">
+                    uninstall_string = #{uninstallString},
+                </if>
+        </set>
+        where   id = #{id} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tpp.threat_perception_platform.pojo.App">
+        update app
+        set 
+>>>>>>> main
             mac_address =  #{macAddress},
             display_name =  #{displayName},
             install_location =  #{installLocation},
             uninstall_string =  #{uninstallString}
+<<<<<<< HEAD
         where   id = #{id}
     </update>
 
@@ -95,4 +161,8 @@
     </select>
 
 
+=======
+        where   id = #{id} 
+    </update>
+>>>>>>> main
 </mapper>

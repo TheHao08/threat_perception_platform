@@ -33,7 +33,11 @@
             </div>
 
             <!--  表格数据加载 -->
+<<<<<<< HEAD
             <table id="LAY-role-manage" lay-filter="LAY-role-manage"></table>
+=======
+            <table id="LAY-user-manage" lay-filter="LAY-user-manage"></table>
+>>>>>>> main
 
 
 
@@ -87,7 +91,11 @@
 
         //加载table
         table.render({
+<<<<<<< HEAD
             elem: '#LAY-role-manage'
+=======
+            elem: '#LAY-user-manage'
+>>>>>>> main
             ,method: 'post'
             ,url:'/role/list' //后端接口
             ,headers: {
@@ -101,7 +109,11 @@
                 {type: 'checkbox', fixed: 'left'}
                 ,{field:'roleId',title:'ID',width: 80}
                 ,{field:'roleName', title:'角色名',width: 100}
+<<<<<<< HEAD
                 ,{field:'roleDesc', title:'角色描述',width: 100}
+=======
+                ,{field:'roleDesc', title:'角色描述',width: 200}
+>>>>>>> main
                 ,{fixed: 'right', title:'操作', toolbar: '#table-useradmin-webuser',width:180}
             ]]
             ,page: {
@@ -112,21 +124,37 @@
         });
 
         //监听行工具事件: 单行删除和修改
+<<<<<<< HEAD
         table.on('tool(LAY-role-manage)', function(obj){
+=======
+        table.on('tool(LAY-user-manage)', function(obj){
+>>>>>>> main
             var data = obj.data;
             if(obj.event === 'del'){
                 layer.confirm('真的删除吗?', function(index){
                     $.ajax({
+<<<<<<< HEAD
                         url:"/role/del/"+data.roleId, //请求后端接口地址
+=======
+                        url:"/role/delete", //请求后端接口地址
+>>>>>>> main
                         type:"post", //请求方式get | post
                         headers: {
                             'Authorization': localStorage.getItem('token')
                         },
+<<<<<<< HEAD
+=======
+                        data:{ids:[data.roleId]}, //数据
+>>>>>>> main
                         dataType:"json", //后端返回参数类型
                         success:function (res){ //请求成功后回调函数res = JSONObject.toJSONString(resultMap)
                             if(res.code == 0){//成功
                                 layer.msg(res.msg);//弹出提示
+<<<<<<< HEAD
                                 table.reload('LAY-role-manage'); //数据刷新
+=======
+                                table.reload('LAY-user-manage'); //数据刷新
+>>>>>>> main
                                 layer.close(index); //关闭弹层
                             }else {
                                 layer.msg(res.msg,{icon: 5});//弹出提示
@@ -150,6 +178,7 @@
                         var contentWindow = layero.find('iframe')[0].contentWindow;//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
                         // 获取编辑表单中用户名元素
                         // 数据回显到弹出的表单中
+<<<<<<< HEAD
                         contentWindow.layui.form.val('layuiadmin-form-roleadmin', {
                             "roleId": data.roleId,
                             "roleName": data.roleName,
@@ -161,6 +190,18 @@
                     ,yes: function (index,layero){
                         var iframeWindow = window['layui-layer-iframe'+ index]
                             ,submitID = 'LAY-role-front-submit'
+=======
+                        contentWindow.layui.form.val('layuiadmin-form-useradmin', {
+                            "roleId": data.roleId
+                            ,"roleName": data.roleName
+                            ,"roleDesc": data.roleDesc
+                        });
+
+                    }
+                    ,yes: function (index,layero){
+                        var iframeWindow = window['layui-layer-iframe'+ index]
+                            ,submitID = 'LAY-user-front-submit'
+>>>>>>> main
                             ,submit = layero.find('iframe').contents().find('#'+ submitID);
                         //监听提交--隐藏按钮
                         iframeWindow.layui.form.on('submit('+ submitID +')', function(data){
@@ -178,7 +219,11 @@
                                 success:function (res){
                                     if(res.code == 0){//成功
                                         layer.msg(res.msg);//弹出提示
+<<<<<<< HEAD
                                         table.reload('LAY-role-manage'); //数据刷新
+=======
+                                        table.reload('LAY-user-manage'); //数据刷新
+>>>>>>> main
                                         layer.close(index); //关闭弹层
                                     }else{//系统出问题
                                         layer.msg(res.msg,{icon: 5});//弹出提示
@@ -197,7 +242,11 @@
         form.on('submit(LAY-sysuser-front-search)', function(data){
             var field = data.field;
             //执行重载
+<<<<<<< HEAD
             table.reload('LAY-role-manage', {
+=======
+            table.reload('LAY-user-manage', {
+>>>>>>> main
                 url: '/role/list',
                 method: "post",
                 headers: {
@@ -209,7 +258,46 @@
 
         //事件 批量删除，添加用户
         var active = {
+<<<<<<< HEAD
             add: function(){
+=======
+            batchdel: function(){
+                var checkStatus = table.checkStatus('LAY-user-manage')
+                    ,checkData = checkStatus.data; //得到选中的数据
+
+                if(checkData.length == 0){
+                    return layer.msg('请选择数据');
+                }
+
+                // 程序走到这里，表示已经有选中要删除的数据了。
+                layer.confirm('确定删除吗？',function (){
+                    var roleIds = [];
+                    $.each(checkData,function (i,item){
+                           roleIds.push(item.roleId);
+                    })
+                    // 提交给后端
+                    $.ajax({
+                        url:"/role/delete",
+                        type:"post",
+                        headers: {
+                            'Authorization': localStorage.getItem('token')
+                        },
+                        data:{ids:roleIds},
+                        dataType:"json",
+                        success:function (res){
+                            if(res.code == 0){//成功
+                                layer.msg(res.msg);
+                                table.reload('LAY-user-manage'); //数据刷新
+                                layer.close(index); //关闭弹层
+                            }else{
+                                layer.msg(res.msg,{icon: 5});//弹出提示
+                            }
+                        }
+                    })
+                })
+            }
+            ,add: function(){
+>>>>>>> main
                 layer.open({
                     type: 2
                     ,title: '添加角色'
@@ -220,14 +308,22 @@
                     ,btn: ['确定', '取消']
                     ,yes: function (index,layero){
                         var iframeWindow = window['layui-layer-iframe'+ index]
+<<<<<<< HEAD
                             ,submitID = 'LAY-role-front-submit'
+=======
+                            ,submitID = 'LAY-user-front-submit'
+>>>>>>> main
                             ,submit = layero.find('iframe').contents().find('#'+ submitID);
                             //监听提交--隐藏按钮
                             iframeWindow.layui.form.on('submit('+ submitID +')', function(data){
                                 var field = data.field; //获取提交的字段
                                 // 通过Ajax方式将参数提交到后端--保存数据库中
                                 $.ajax({
+<<<<<<< HEAD
                                     url:"/role/add",
+=======
+                                    url:"/role/save",
+>>>>>>> main
                                     type:"post",
                                     headers: {
                                         'Authorization': localStorage.getItem('token')
@@ -238,7 +334,11 @@
                                     success:function (res){
                                         if(res.code === 0){//成功
                                             layer.msg(res.msg);//弹出提示
+<<<<<<< HEAD
                                             table.reload('LAY-role-manage'); //数据刷新
+=======
+                                            table.reload('LAY-user-manage'); //数据刷新
+>>>>>>> main
                                             layer.close(index); //关闭弹层
                                         }else{//系统出问题
                                             layer.msg(res.msg,{icon: 5});//弹出提示

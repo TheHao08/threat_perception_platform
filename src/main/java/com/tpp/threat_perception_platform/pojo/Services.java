@@ -233,4 +233,10 @@ public class Services {
         sb.append("]");
         return sb.toString();
     }
+<<<<<<< HEAD
+=======
+
+    public void setDanger(boolean contains) {
+    }
+>>>>>>> main
 }

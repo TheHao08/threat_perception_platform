@@ -13,6 +13,7 @@ public class ServicesServiceImpl implements ServicesService {
 
     @Override
     public int saveServices(Services services) {
+<<<<<<< HEAD
         System.out.println(">> saveServices called with: mac = " + services.getMacAddress() + ", port = " + services.getPort());
         if (services.getMacAddress() == null || services.getPort() == null) {
             System.out.println(">> mac 或 port 为 null，跳过");
@@ -31,4 +32,18 @@ public class ServicesServiceImpl implements ServicesService {
         }
     }
 
+=======
+        if (services.getMacAddress() == null || services.getPort() == null) {
+            return 0;
+        }
+        // 先查找是否已存在
+        Services dbService = servicesMapper.selectByMacAddressAndPort(services.getMacAddress(), services.getPort());
+        if (dbService != null) {
+            services.setId(dbService.getId());
+            return servicesMapper.updateByPrimaryKeySelective(services);
+        } else {
+            return servicesMapper.insertSelective(services);
+        }
+    }
+>>>>>>> main
 }

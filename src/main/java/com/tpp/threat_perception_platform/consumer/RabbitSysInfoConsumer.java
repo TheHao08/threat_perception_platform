@@ -36,7 +36,11 @@ public class RabbitSysInfoConsumer {
 
     public void receive(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
         System.out.println("Received message: " + message);
+<<<<<<< HEAD
         //将数据存储到数据库
+=======
+         //将数据存储到数据库
+>>>>>>> main
         try {
             Host host = JSON.parseObject(message, Host.class);
             // 存储到数据库
@@ -67,7 +71,11 @@ public class RabbitSysInfoConsumer {
             //根据macAddress查询主机信息
 
             // 存储到数据库
+<<<<<<< HEAD
             int res = hostService.updateHostByMacAddress(host);
+=======
+            int res = hostService.updateByMacAddress(host);
+>>>>>>> main
 
             if (res > 0){
                 // 手动 ACK, 先获取 deliveryTag
@@ -95,6 +103,10 @@ public class RabbitSysInfoConsumer {
             for (Account account : accounts) {
 
                 int res = accountService.save(account);
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
                 if (res > 0) {
                     successCount++;
                 }
@@ -119,13 +131,18 @@ public class RabbitSysInfoConsumer {
     @RabbitListener(queues = "service_queue")
     public void receiveService(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
         System.out.println("Received message: " + message);
+<<<<<<< HEAD
         Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+=======
+        //将数据存储到数据库
+>>>>>>> main
         try {
             int service_count = 0;
             List<Services> servicesList = JSON.parseArray(message, Services.class);
             for (Services services : servicesList) {
                 service_count++;
                 servicesService.saveServices(services);
+<<<<<<< HEAD
             }
             System.out.println("成功保存服务数量: " + service_count);
             // ✅ 成功后 ACK
@@ -139,6 +156,20 @@ public class RabbitSysInfoConsumer {
     }
 
 
+=======
+
+            }
+            System.out.println("成功保存服务数量: " + service_count);
+        } catch (Exception e) {
+            //throw new RuntimeException(e);
+            // 手动 ACK, 先获取 deliveryTag
+            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            // ACK
+            channel.basicAck(deliveryTag,false);
+        }
+    }
+
+>>>>>>> main
     @RabbitListener(queues = "process_queue")
     public void receiveProcess(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
         System.out.println("Received message: " + message);

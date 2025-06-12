@@ -55,6 +55,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                     new UsernamePasswordAuthenticationToken(loginUser, null, null);
             // 存入SecurityContextHolder
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+<<<<<<< HEAD
 
 
             // 判断是否需要刷新 token
@@ -66,6 +67,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 }
             }
 
+=======
+>>>>>>> main
             // 放行
             filterChain.doFilter(request, response);
         } catch (Exception e) {

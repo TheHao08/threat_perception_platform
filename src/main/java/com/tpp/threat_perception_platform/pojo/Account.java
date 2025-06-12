@@ -1,17 +1,29 @@
 package com.tpp.threat_perception_platform.pojo;
 
 /**
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> main
  * @TableName account
  */
 public class Account {
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Long id;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private String macAddress;
 
@@ -21,218 +33,361 @@ public class Account {
      */
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private String name;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private String fullName;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private String sid;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Integer sidType;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private String status;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Integer disabled;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Integer lockout;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Integer passwordChangeable;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Integer passwordExpires;
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     private Integer passwordRequired;
 
     /**
+<<<<<<< HEAD
      *
      */
+=======
+     * 
+     */
+    // src/main/java/com/tpp/threat_perception_platform/pojo/Account.java
+    private boolean danger; // 新增字段
+
+    public boolean isDanger() { return danger; }
+    public void setDanger(boolean danger) { this.danger = danger; }
+>>>>>>> main
     public Long getId() {
         return id;
     }
 
+<<<<<<< HEAD
     /**
      *
+=======
+       /**
+     * 
+>>>>>>> main
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public String getMacAddress() {
         return macAddress;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setMacAddress(String macAddress) {
         this.macAddress = macAddress;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public String getName() {
         return name;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public String getFullName() {
         return fullName;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public String getSid() {
         return sid;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setSid(String sid) {
         this.sid = sid;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public Integer getSidType() {
         return sidType;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setSidType(Integer sidType) {
         this.sidType = sidType;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public String getStatus() {
         return status;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setStatus(String status) {
         this.status = status;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public Integer getDisabled() {
         return disabled;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setDisabled(Integer disabled) {
         this.disabled = disabled;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public Integer getLockout() {
         return lockout;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setLockout(Integer lockout) {
         this.lockout = lockout;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public Integer getPasswordChangeable() {
         return passwordChangeable;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setPasswordChangeable(Integer passwordChangeable) {
         this.passwordChangeable = passwordChangeable;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public Integer getPasswordExpires() {
         return passwordExpires;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setPasswordExpires(Integer passwordExpires) {
         this.passwordExpires = passwordExpires;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public Integer getPasswordRequired() {
         return passwordRequired;
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> main
      */
     public void setPasswordRequired(Integer passwordRequired) {
         this.passwordRequired = passwordRequired;
@@ -251,6 +406,7 @@ public class Account {
         }
         Account other = (Account) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+<<<<<<< HEAD
                 && (this.getMacAddress() == null ? other.getMacAddress() == null : this.getMacAddress().equals(other.getMacAddress()))
                 && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
                 && (this.getFullName() == null ? other.getFullName() == null : this.getFullName().equals(other.getFullName()))
@@ -262,6 +418,19 @@ public class Account {
                 && (this.getPasswordChangeable() == null ? other.getPasswordChangeable() == null : this.getPasswordChangeable().equals(other.getPasswordChangeable()))
                 && (this.getPasswordExpires() == null ? other.getPasswordExpires() == null : this.getPasswordExpires().equals(other.getPasswordExpires()))
                 && (this.getPasswordRequired() == null ? other.getPasswordRequired() == null : this.getPasswordRequired().equals(other.getPasswordRequired()));
+=======
+            && (this.getMacAddress() == null ? other.getMacAddress() == null : this.getMacAddress().equals(other.getMacAddress()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getFullName() == null ? other.getFullName() == null : this.getFullName().equals(other.getFullName()))
+            && (this.getSid() == null ? other.getSid() == null : this.getSid().equals(other.getSid()))
+            && (this.getSidType() == null ? other.getSidType() == null : this.getSidType().equals(other.getSidType()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getDisabled() == null ? other.getDisabled() == null : this.getDisabled().equals(other.getDisabled()))
+            && (this.getLockout() == null ? other.getLockout() == null : this.getLockout().equals(other.getLockout()))
+            && (this.getPasswordChangeable() == null ? other.getPasswordChangeable() == null : this.getPasswordChangeable().equals(other.getPasswordChangeable()))
+            && (this.getPasswordExpires() == null ? other.getPasswordExpires() == null : this.getPasswordExpires().equals(other.getPasswordExpires()))
+            && (this.getPasswordRequired() == null ? other.getPasswordRequired() == null : this.getPasswordRequired().equals(other.getPasswordRequired()));
+>>>>>>> main
     }
 
     @Override

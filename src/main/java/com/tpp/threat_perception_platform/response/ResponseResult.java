@@ -1,7 +1,15 @@
 package com.tpp.threat_perception_platform.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
+<<<<<<< HEAD
 import lombok.Data;
 
+=======
+import com.tpp.threat_perception_platform.pojo.Account;
+import lombok.Data;
+
+import java.util.List;
+
+>>>>>>> main
 /**
  * 响应结果类
  *
@@ -48,6 +56,7 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
+<<<<<<< HEAD
     public static <T> ResponseResult<T> okResult(T data) {
         return new ResponseResult<>(0, data);
     }
@@ -61,3 +70,8 @@ public class ResponseResult<T> {
 }
 
 
+=======
+    public ResponseResult(int i, String s, long total, List<Account> list) {
+    }
+}
+>>>>>>> main

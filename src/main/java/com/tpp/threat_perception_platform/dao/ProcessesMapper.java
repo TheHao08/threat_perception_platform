@@ -7,11 +7,19 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+<<<<<<< HEAD
  * @author bqs1
  * @description 针对表【processes】的数据库操作Mapper
  * @createDate 2025-06-10 16:55:31
  * @Entity com.tpp.threat_perception_platform.pojo.Processes
  */
+=======
+* @author bqs1
+* @description 针对表【processes】的数据库操作Mapper
+* @createDate 2025-06-10 16:55:31
+* @Entity com.tpp.threat_perception_platform.pojo.Processes
+*/
+>>>>>>> main
 public interface ProcessesMapper {
 
     int deleteByPrimaryKey(Long id);
@@ -28,6 +36,10 @@ public interface ProcessesMapper {
 
     int updateByPrimaryKey(Processes record);
 
+<<<<<<< HEAD
     List<Processes> selectListByMac(String macAddress);
 
+=======
+    List<Processes> selectByMacAddress(String macAddress);
+>>>>>>> main
 }

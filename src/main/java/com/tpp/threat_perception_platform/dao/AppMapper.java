@@ -27,5 +27,9 @@ public interface AppMapper {
 
     App selectByMacAddressAndDisplayName(@Param("macAddress") String macAddress, @Param("displayName") String displayName);
 
+<<<<<<< HEAD
     List<App> selectListByMac(String macAddress);
+=======
+    List<App> selectByMacAddress(String macAddress);
+>>>>>>> main
 }
