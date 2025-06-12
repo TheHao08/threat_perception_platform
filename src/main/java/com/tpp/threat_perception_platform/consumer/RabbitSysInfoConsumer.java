@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
 import com.tpp.threat_perception_platform.pojo.*;
 import com.tpp.threat_perception_platform.service.*;
+import com.tpp.threat_perception_platform.utils.AESDecryptUtil;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.annotation.RabbitListeners;
 import org.springframework.amqp.support.AmqpHeaders;
@@ -86,105 +87,133 @@ public class RabbitSysInfoConsumer {
 
     @RabbitListener(queues = "account_queue")
     public void receiveAccount(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
-        System.out.println("Received message: " + message);
+        System.out.println("Encrypted message received!\n"+ message );
+
+        Long deliveryTag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
 
         try {
-            List<Account> accounts = JSON.parseArray(message, Account.class);
-            // 存储到数据库
+            //AES解密
+            String decryptedJson = AESDecryptUtil.decrypt(message);
+            System.out.println("Decrypted JSON:\n" + decryptedJson);
+
+            //JSON转对象
+            List<Account> accounts = JSON.parseArray(decryptedJson, Account.class);
+
+            //存储到数据库
             int successCount = 0;
             for (Account account : accounts) {
-
                 int res = accountService.save(account);
                 if (res > 0) {
                     successCount++;
                 }
-//                System.out.println("===================================");
-//                System.out.println(account);
-//                System.out.println("===================================");
             }
-            // 全部处理完毕后ACK
             System.out.println("成功保存账号数量: " + successCount);
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            //ACK
             channel.basicAck(deliveryTag, false);
+
         } catch (Exception e) {
-//            throw new RuntimeException(e);
-            System.err.println("处理账号信息时发生错误: " + e.getMessage());
-            // 手动 ACK, 先获取 deliveryTag
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
-            // ACK
-            channel.basicAck(deliveryTag,false);
+            System.err.println("解密或处理账号信息失败: " + e.getMessage());
+
+            channel.basicAck(deliveryTag, false);
         }
     }
 
     @RabbitListener(queues = "service_queue")
     public void receiveService(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
-        System.out.println("Received message: " + message);
-        //将数据存储到数据库
-        try {
-            int service_count = 0;
-            List<Services> servicesList = JSON.parseArray(message, Services.class);
-            for (Services services : servicesList) {
-                service_count++;
-                servicesService.saveServices(services);
+        System.out.println("Encrypted message received!\n" + message);
 
+        Long deliveryTag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
+
+        try {
+            //AES解密
+            String decryptedJson = AESDecryptUtil.decrypt(message);
+            System.out.println("Decrypted JSON:\n" + decryptedJson);
+
+            //JSON转对象
+            List<Account> accounts = JSON.parseArray(decryptedJson, Account.class);
+
+            //存储到数据库
+            int successCount = 0;
+            for (Account account : accounts) {
+                int res = accountService.save(account);
+                if (res > 0) {
+                    successCount++;
+                }
             }
-            System.out.println("成功保存服务数量: " + service_count);
+            System.out.println("成功保存服务数量: " + successCount);
+            //ACK
+            channel.basicAck(deliveryTag, false);
+
         } catch (Exception e) {
-            //throw new RuntimeException(e);
-            // 手动 ACK, 先获取 deliveryTag
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
-            // ACK
-            channel.basicAck(deliveryTag,false);
+            System.err.println("解密或处理服务信息失败: " + e.getMessage());
+
+            channel.basicAck(deliveryTag, false);
         }
     }
 
     @RabbitListener(queues = "process_queue")
     public void receiveProcess(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
-        System.out.println("Received message: " + message);
-        //将数据存储到数据库
+        System.out.println("Encrypted message received!\n" + message);
+
+        Long deliveryTag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
+
         try {
-            List<Processes> processesList = JSON.parseArray(message, Processes.class);
-            int process_count = 0;
-            for (Processes process : processesList) {
-                process_count++;
-                processService.save(process);
+            //AES解密
+            String decryptedJson = AESDecryptUtil.decrypt(message);
+            System.out.println("Decrypted JSON:\n" + decryptedJson);
+
+            //JSON转对象
+            List<Account> accounts = JSON.parseArray(decryptedJson, Account.class);
+
+            //存储到数据库
+            int successCount = 0;
+            for (Account account : accounts) {
+                int res = accountService.save(account);
+                if (res > 0) {
+                    successCount++;
+                }
             }
-            System.out.println("成功保存进程数量: " + process_count);
-            // 手动 ACK, 先获取 deliveryTag
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
-            // ACK
-            channel.basicAck(deliveryTag,false);
+            System.out.println("成功保存进程数量: " + successCount);
+            //ACK
+            channel.basicAck(deliveryTag, false);
+
         } catch (Exception e) {
-            //throw new RuntimeException(e);
-            // 手动 ACK, 先获取 deliveryTag
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
-            // ACK
-            channel.basicAck(deliveryTag,false);
+            System.err.println("解密或处理进程信息失败: " + e.getMessage());
+
+            channel.basicAck(deliveryTag, false);
         }
     }
 
     @RabbitListener(queues="app_queue")
     public void receiveApp(String message, @Headers Map<String,Object> headers, Channel channel) throws IOException {
-        System.out.println("Received message: " + message);
-        //将数据存储到数据库
+        System.out.println("Encrypted message received!\n" + message);
+
+        Long deliveryTag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
+
         try {
-            List<App> appList = JSON.parseArray(message, App.class);
-            int app_count = 0;
-            for (App app : appList) {
-                app_count++;
-                // 调用服务保存应用信息
-                appService.save(app);
+            //AES解密
+            String decryptedJson = AESDecryptUtil.decrypt(message);
+            System.out.println("Decrypted JSON:\n" + decryptedJson);
+
+            //JSON转对象
+            List<Account> accounts = JSON.parseArray(decryptedJson, Account.class);
+
+            //存储到数据库
+            int successCount = 0;
+            for (Account account : accounts) {
+                int res = accountService.save(account);
+                if (res > 0) {
+                    successCount++;
+                }
             }
-            System.out.println("成功保存应用数量: " + app_count);
-            // 手动 ACK, 先获取 deliveryTag
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
-            // ACK
-            channel.basicAck(deliveryTag,false);
+            System.out.println("成功保存应用数量: " + successCount);
+            //ACK
+            channel.basicAck(deliveryTag, false);
+
         } catch (Exception e) {
-            e.printStackTrace(); // 打印异常堆栈
-            Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
-            channel.basicAck(deliveryTag,false);
+            System.err.println("解密或处理应用信息失败: " + e.getMessage());
+
+            channel.basicAck(deliveryTag, false);
         }
     }
-
 }
